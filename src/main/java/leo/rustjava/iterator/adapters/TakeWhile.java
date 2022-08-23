@@ -11,13 +11,13 @@ import static leo.rustjava.Option.None;
 
 public class TakeWhile<T> implements Iterator<T>, FusedIterator<T> {
     private final Iterator<T> iter;
-    private final Predicate<T> predicate;
-    private boolean flag;
+	private final Predicate<? super T> predicate;
+	private boolean flag;
 
-    public TakeWhile(Iterator<T> iter, Predicate<T> predicate) {
-        this.iter = iter;
-        this.predicate = predicate;
-    }
+	public TakeWhile(Iterator<T> iter, Predicate<? super T> predicate) {
+		this.iter = iter;
+		this.predicate = predicate;
+	}
 
     @Override
     public Option<T> next() {

@@ -49,7 +49,7 @@ public class Peekable<T> implements Iterator<T> {
 	}
 
 	@Override
-	public <B> B fold(B seed, BiFunction<B, T, B> f) {
+	public <B> B fold(B seed, BiFunction<? super B, ? super T, ? extends B> f) {
 		B acc = seed;
 		if (peeked.isSomeAnd(Option::isNone)) return seed;
 		else if (peeked.isSome()) acc = f.apply(seed, peeked.unwrap().unwrap());

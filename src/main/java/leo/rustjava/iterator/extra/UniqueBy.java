@@ -5,16 +5,17 @@ import leo.rustjava.iterator.Iterator;
 import leo.rustjava.iterator.SizeHint;
 
 import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Function;
 
 import static leo.rustjava.Option.None;
 
 public class UniqueBy<T, U> implements Iterator<T> {
 	private final Iterator<T> iter;
-	private final Function<T, U> id;
-	private final HashSet<U> alreadyPresent;
+	private final Function<? super T, ? extends U> id;
+	private final Set<U> alreadyPresent;
 
-	public UniqueBy(Iterator<T> iter, Function<T, U> id) {
+	public UniqueBy(Iterator<T> iter, Function<? super T, ? extends U> id) {
 		this.iter = iter;
 		this.id = id;
 		alreadyPresent = new HashSet<>();

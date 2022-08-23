@@ -9,11 +9,11 @@ import java.util.function.Supplier;
 import static leo.rustjava.Option.Some;
 
 public class RepeatWith<T> implements Iterator<T>, EndlessIterator<T> {
-    private final Supplier<T> supplier;
+    private final Supplier<? extends T> supplier;
 
-    public RepeatWith(Supplier<T> supplier) {
-        this.supplier = supplier;
-    }
+	public RepeatWith(Supplier<? extends T> supplier) {
+		this.supplier = supplier;
+	}
 
     @Override
     public Option<T> next() {

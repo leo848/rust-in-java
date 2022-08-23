@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("EmptyMethod")
 class OptionTest {
 	Option<Integer> noneInt = Option.None();
 	Option<Integer> someEvenInt = Option.Some(420);

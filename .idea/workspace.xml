@@ -8,9 +8,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="initial">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="add README.md to explain what this is about">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/Option.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Cycle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Filter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FilterMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FilterMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FlatMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FlatMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Inspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Inspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/MapWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/MapWhile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Peekable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Peekable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Scan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Scan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/SkipWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/SkipWhile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/TakeWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/TakeWhile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/Chunks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/Chunks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/ChunksExact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/ChunksExact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/DedupBy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/DedupBy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/DedupByWithCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/DedupByWithCount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/DuplicatesBy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/DuplicatesBy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/GroupBy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/GroupBy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/PadUsing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/PadUsing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/Positions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/Positions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/Unique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/Unique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/UniqueBy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/UniqueBy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/FromFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/FromFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/OnceWith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/OnceWith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/RepeatWith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/RepeatWith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Successors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Successors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/OptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/OptionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +61,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2DTiOrPWon3tkWWQtPV1bVFX72R" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -51,7 +83,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_directory_selection": "/home/leo/Projects/IdeaProjects/RustJava/src/main/java/leo/rustjava/iterator/sources",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable"
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -183,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661181111762</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add README.md to explain what this is about">
+      <created>1661183283538</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661183283538</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -201,7 +240,8 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial" />
+    <MESSAGE value="add README.md to explain what this is about" />
+    <option name="LAST_COMMIT_MESSAGE" value="add README.md to explain what this is about" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

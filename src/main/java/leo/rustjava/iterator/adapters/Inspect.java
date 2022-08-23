@@ -8,9 +8,9 @@ import java.util.function.Consumer;
 
 public class Inspect<T> implements Iterator<T> {
 	private final Iterator<T> iter;
-	private final Consumer<T> consumer;
+	private final Consumer<? super T> consumer;
 
-	public Inspect(Iterator<T> iter, Consumer<T> consumer) {
+	public Inspect(Iterator<T> iter, Consumer<? super T> consumer) {
 		this.iter = iter;
 		this.consumer = consumer;
 	}

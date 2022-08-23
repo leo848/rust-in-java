@@ -10,11 +10,11 @@ import static leo.rustjava.Option.Some;
 
 public class PadUsing<T> implements Iterator<T> {
 	private final Iterator<T> iter;
-	private final Function<Integer, T> function;
+	private final Function<? super Integer, ? extends T> function;
 	private final int min;
 	private int count = -1;
 
-	public PadUsing(Iterator<T> iter, int min, Function<Integer, T> function) {
+	public PadUsing(Iterator<T> iter, int min, Function<? super Integer, ? extends T> function) {
 		this.iter = iter;
 		this.min = min;
 		this.function = function;

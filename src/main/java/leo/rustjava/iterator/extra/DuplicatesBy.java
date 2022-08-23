@@ -11,10 +11,10 @@ import static leo.rustjava.Option.None;
 
 public class DuplicatesBy<T, U> implements Iterator<T> {
 	private final Iterator<T> iter;
-	private final Function<T, U> id;
+	private final Function<? super T, ? extends U> id;
 	private final HashMap<U, Integer> presentItems;
 
-	public DuplicatesBy(Iterator<T> iter, Function<T, U> id) {
+	public DuplicatesBy(Iterator<T> iter, Function<? super T, ? extends U> id) {
 		this.iter = iter;
 		this.id = id;
 		this.presentItems = new HashMap<>();

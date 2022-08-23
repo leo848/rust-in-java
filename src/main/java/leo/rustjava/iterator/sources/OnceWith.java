@@ -8,14 +8,13 @@ import leo.rustjava.iterator.interfaces.FusedIterator;
 
 import java.util.function.Supplier;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 
 public class OnceWith<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIterator<T>, FusedIterator<T> {
-    private final Supplier<T> supplier;
+    private final Supplier<? extends T> supplier;
     private boolean exhausted;
 
-    public OnceWith(Supplier<T> supplier) {
+    public OnceWith(Supplier<? extends T> supplier) {
         this.supplier = supplier;
         this.exhausted = false;
     }

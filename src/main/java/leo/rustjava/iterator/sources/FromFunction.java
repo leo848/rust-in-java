@@ -7,9 +7,9 @@ import leo.rustjava.iterator.SizeHint;
 import java.util.function.Supplier;
 
 public class FromFunction<T> implements Iterator<T> {
-	Supplier<Option<T>> supplier;
+	Supplier<? extends Option<T>> supplier;
 
-	public FromFunction(Supplier<Option<T>> supplier) {
+	public FromFunction(Supplier<? extends Option<T>> supplier) {
 		this.supplier = supplier;
 	}
 

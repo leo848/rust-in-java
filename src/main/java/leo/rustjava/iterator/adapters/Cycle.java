@@ -7,8 +7,7 @@ import leo.rustjava.iterator.SizeHint;
 import java.util.ArrayList;
 import java.util.List;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 
 public class Cycle<T> implements Iterator<T> {
 	private final Iterator<T> iter;
@@ -39,7 +38,7 @@ public class Cycle<T> implements Iterator<T> {
 
 	@Override
 	public SizeHint sizeHint() {
-		return this.index == 0 ? SizeHint.UNKNOWN : this.cache.size() == 0 ? SizeHint.ZERO : SizeHint.ENDLESS;
+		return this.index == 0 ? SizeHint.UNKNOWN : this.cache.isEmpty() ? SizeHint.ZERO : SizeHint.ENDLESS;
 	}
 
 	@Override

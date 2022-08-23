@@ -8,37 +8,38 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+@SuppressWarnings("BoundedWildcard")
 public class Iterators {
     @SafeVarargs
-    public static <Item> ListIter<Item> of(Item... items) {
+    public static <Item> ListIter<Item> of(final Item... items) {
         return new ListIter<>(Arrays.asList(items));
     }
 
-    public static <Item> FromFunction<Item> fromFunction(Supplier<Option<Item>> f) {
+    public static <Item> FromFunction<Item> fromFunction(final Supplier<Option<Item>> f) {
         return new FromFunction<>(f);
     }
 
-    public static <Item> Repeat<Item> repeat(Item item) {
+    public static <Item> Repeat<Item> repeat(final Item item) {
         return new Repeat<>(item);
     }
 
-    public static <Item> RepeatWith<Item> repeatWith(Supplier<Item> supplier) {
+    public static <Item> RepeatWith<Item> repeatWith(final Supplier<Item> supplier) {
         return new RepeatWith<>(supplier);
     }
 
-    public static Range range(int start, int end) {
+    public static Range range(final int start, final int end) {
         return new Range(start, end);
     }
 
-    public static EndlessRange range(int start) {
+    public static EndlessRange range(final int start) {
         return new EndlessRange(start);
     }
 
-    public static Range rangeInclusive(int start, int end) {
+    public static Range rangeInclusive(final int start, final int end) {
         return new Range(start, end + 1);
     }
 
-    public static <Item> Successors<Item> successors(Item seed, Function<Item, Option<Item>> f) {
+    public static <Item> Successors<Item> successors(final Item seed, final Function<Item, Option<Item>> f) {
         return new Successors<>(seed, f);
     }
 
@@ -46,19 +47,19 @@ public class Iterators {
         return new Empty<>();
     }
 
-    public static <Item> Once<Item> once(Item item) {
+    public static <Item> Once<Item> once(final Item item) {
         return new Once<>(item);
     }
 
-    public static <Item> OnceWith<Item> onceWith(Supplier<Item> supplier) {
+    public static <Item> OnceWith<Item> onceWith(final Supplier<Item> supplier) {
         return new OnceWith<>(supplier);
     }
 
-    public static ListIter<Character> chars(String string) {
+    public static ListIter<Character> chars(final String string) {
         return fromList(string.chars().mapToObj(num -> (char) num).toList());
     }
 
-    public static <Item> ListIter<Item> fromList(List<Item> list) {
+    public static <Item> ListIter<Item> fromList(final List<Item> list) {
         return new ListIter<>(list);
     }
 

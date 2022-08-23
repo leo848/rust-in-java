@@ -8,15 +8,14 @@ import leo.rustjava.iterator.interfaces.FusedIterator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 import static leo.rustjava.iterator.Iterators.fromList;
 
 public class ChunksExact<T> implements Iterator<ExactSizeIterator<T>>, FusedIterator<ExactSizeIterator<T>> {
-	private final Iterator<T> iter;
+	private final Iterator<? extends T> iter;
 	private final int chunkSize;
 
-	public ChunksExact(Iterator<T> iter, int chunkSize) {
+	public ChunksExact(Iterator<? extends T> iter, int chunkSize) {
 		this.iter = iter;
 		this.chunkSize = chunkSize;
 	}

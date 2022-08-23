@@ -5,13 +5,10 @@ import leo.rustjava.iterator.Iterators;
 import leo.rustjava.iterator.interfaces.IntoIter;
 
 import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
-@SuppressWarnings("unused")
-public class Option<T> implements IntoIter<T> {
+@SuppressWarnings({"unused", "AssignmentToNull"})
+public final class Option<T> implements IntoIter<T> {
 	public static Option<Object> None = None();
 	private T value;
 
@@ -51,28 +48,28 @@ public class Option<T> implements IntoIter<T> {
 		return value;
 	}
 
-	public T unwrapOrElse(Supplier<T> supplier) {
+	public T unwrapOrElse(Supplier<? extends T> supplier) {
 		if (isNone()) return supplier.get();
 		return this.unwrap();
 	}
 
-	public boolean isSomeAnd(Predicate<T> predicate) {
+	public boolean isSomeAnd(Predicate<? super T> predicate) {
 		Option<Boolean> maybe = this.map(predicate::test);
 		if (maybe.isNone()) return false;
 		return maybe.unwrap();
 	}
 
-	public boolean isNoneOr(Predicate<T> predicate) {
+	public boolean isNoneOr(Predicate<? super T> predicate) {
 		if (isNone()) return true;
 		return predicate.test(this.unwrap());
 	}
 
-	public <U> U mapOrElse(Supplier<U> supplier, Function<T, U> function) {
+	public <U> U mapOrElse(Supplier<? extends U> supplier, Function<? super T, ? extends U> function) {
 		if (isNone()) return supplier.get();
 		return this.map(function).unwrap();
 	}
 
-	public <U> Option<U> map(Function<T, U> function) {
+	public <U> Option<U> map(Function<? super T, ? extends U> function) {
 		if (value == null) return Option.None();
 		return Option.Some(function.apply(this.unwrap()));
 	}
@@ -82,12 +79,12 @@ public class Option<T> implements IntoIter<T> {
 		return option;
 	}
 
-	public <U> Option<U> andThen(Function<T, Option<U>> function) {
+	public <U> Option<U> andThen(Function<? super T, ? extends Option<U>> function) {
 		if (isNone()) return Option.None();
 		return function.apply(this.unwrap());
 	}
 
-	public Option<T> filter(Predicate<T> predicate) {
+	public Option<T> filter(Predicate<? super T> predicate) {
 		if (isNone()) return Option.None();
 		else if (predicate.test(this.unwrap())) {
 			return this;
@@ -105,7 +102,7 @@ public class Option<T> implements IntoIter<T> {
 		return !isNone();
 	}
 
-	public Option<T> orElse(Supplier<Option<T>> supplier) {
+	public Option<T> orElse(Supplier<? extends Option<T>> supplier) {
 		if (isSome()) return this;
 		else return supplier.get();
 	}
@@ -116,6 +113,7 @@ public class Option<T> implements IntoIter<T> {
 		else return option;
 	}
 
+	@SuppressWarnings("UnusedReturnValue")
 	public Option<T> insert(T value) {
 		this.value = value;
 		return this;
@@ -126,7 +124,7 @@ public class Option<T> implements IntoIter<T> {
 		return this.unwrap();
 	}
 
-	public T getOrInsertWith(Supplier<T> supplier) {
+	public T getOrInsertWith(Supplier<? extends T> supplier) {
 		if (isNone()) this.value = supplier.get();
 		return this.unwrap();
 	}
@@ -154,22 +152,22 @@ public class Option<T> implements IntoIter<T> {
 		return this.unwrap().equals(value);
 	}
 
-	public Option<T> inspect(Consumer<T> consumer) {
+	public Option<T> inspect(Consumer<? super T> consumer) {
 		if (isSome()) consumer.accept(this.unwrap());
 		return this;
 	}
 
-	public <U> Option<Pair<T, U>> zip(Option<U> other) {
+	public <U> Option<Pair<T, U>> zip(Option<? extends U> other) {
 		if (this.isNone() || other.isNone()) return None();
 		return Some(new Pair<>(this.unwrap(), other.unwrap()));
 	}
 
-	public void ifSome(Consumer<T> consumer) {
+	public void ifSome(Consumer<? super T> consumer) {
 		if (isNone()) return;
 		consumer.accept(this.unwrap());
 	}
 
-	public void ifElse(Consumer<T> consumer, Runnable runnable) {
+	public void ifElse(Consumer<? super T> consumer, Runnable runnable) {
 		if (isNone()) runnable.run();
 		else consumer.accept(this.unwrap());
 	}
@@ -189,7 +187,7 @@ public class Option<T> implements IntoIter<T> {
 		return mapOr(Iterators.empty(), Iterators::once);
 	}
 
-	public <U> U mapOr(U defaultU, Function<T, U> function) {
+	public <U> U mapOr(U defaultU, Function<? super T, ? extends U> function) {
 		if (isNone()) return defaultU;
 		return this.map(function).unwrap();
 	}

@@ -10,14 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 
 public class GroupBy<T, K> implements Iterator<Pair<K, List<T>>> {
     private final Peekable<T> iter;
-    private final Function<T, K> key;
+    private final Function<? super T, K> key;
 
-    public GroupBy(Iterator<T> iter, Function<T, K> key) {
+    public GroupBy(Iterator<T> iter, Function<? super T, K> key) {
         this.iter = iter.peekable();
         this.key = key;
     }

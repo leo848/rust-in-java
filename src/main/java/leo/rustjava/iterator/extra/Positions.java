@@ -6,15 +6,14 @@ import leo.rustjava.iterator.SizeHint;
 
 import java.util.function.Predicate;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 
 public class Positions<T> implements Iterator<Integer> {
-	private final Iterator<T> iter;
-	private final Predicate<T> predicate;
+	private final Iterator<? extends T> iter;
+	private final Predicate<? super T> predicate;
 	private int count = -1;
 
-	public Positions(Iterator<T> iter, Predicate<T> predicate) {
+	public Positions(Iterator<? extends T> iter, Predicate<? super T> predicate) {
 		this.iter = iter;
 		this.predicate = predicate;
 	}

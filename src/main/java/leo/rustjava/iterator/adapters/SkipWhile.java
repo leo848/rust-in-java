@@ -9,10 +9,10 @@ import static leo.rustjava.Option.None;
 
 public class SkipWhile<T> implements Iterator<T> {
 	private final Iterator<T> iter;
-	private final Predicate<T> predicate;
+	private final Predicate<? super T> predicate;
 	private boolean flag;
 
-	public SkipWhile(Iterator<T> iter, Predicate<T> predicate) {
+	public SkipWhile(Iterator<T> iter, Predicate<? super T> predicate) {
 		this.iter = iter;
 		this.predicate = predicate;
 		this.flag = false;

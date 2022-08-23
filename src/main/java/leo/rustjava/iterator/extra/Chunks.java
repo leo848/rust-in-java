@@ -8,15 +8,14 @@ import leo.rustjava.iterator.interfaces.FusedIterator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 import static leo.rustjava.iterator.Iterators.fromList;
 
 public class Chunks<T> implements Iterator<Iterator<T>>, FusedIterator<Iterator<T>> {
-    private final Iterator<T> iter;
+    private final Iterator<? extends T> iter;
     private final int chunkSize;
 
-    public Chunks(Iterator<T> iter, int chunkSize) {
+    public Chunks(Iterator<? extends T> iter, int chunkSize) {
         this.iter = iter;
         this.chunkSize = chunkSize;
     }
@@ -25,7 +24,7 @@ public class Chunks<T> implements Iterator<Iterator<T>>, FusedIterator<Iterator<
     public Option<Iterator<T>> next() {
         List<T> list = new ArrayList<>();
         iter.take(chunkSize).forEach(list::add);
-        if (list.size() == 0) return None();
+        if (list.isEmpty()) return None();
         else return Some(fromList(list));
     }
 

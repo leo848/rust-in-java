@@ -11,10 +11,10 @@ import static leo.rustjava.Option.None;
 
 public class DedupByWithCount<T> implements Iterator<Pair<Integer, T>> {
     private final Iterator<T> iter;
-    private final BiPredicate<T, T> cmp;
+    private final BiPredicate<? super T, ? super T> cmp;
     public Option<T> duplicate;
 
-    public DedupByWithCount(Iterator<T> iter, BiPredicate<T, T> cmp) {
+    public DedupByWithCount(Iterator<T> iter, BiPredicate<? super T, ? super T> cmp) {
         this.iter = iter;
         this.cmp = cmp;
         this.duplicate = None();

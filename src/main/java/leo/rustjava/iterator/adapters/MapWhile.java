@@ -6,10 +6,10 @@ import leo.rustjava.iterator.Iterator;
 import java.util.function.Function;
 
 public class MapWhile<T, U> implements Iterator<U> {
-	private final Iterator<T> iter;
-	private final Function<T, Option<U>> function;
+	private final Iterator<? extends T> iter;
+	private final Function<? super T, ? extends Option<U>> function;
 
-	public MapWhile(Iterator<T> iter, Function<T, Option<U>> function) {
+	public MapWhile(Iterator<? extends T> iter, Function<? super T, ? extends Option<U>> function) {
 		this.iter = iter;
 		this.function = function;
 	}

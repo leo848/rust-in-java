@@ -7,10 +7,10 @@ import leo.rustjava.iterator.SizeHint;
 import java.util.function.Function;
 
 public class Map<T, U> implements Iterator<U> {
-	private final Iterator<T> iter;
-	private final Function<T, U> f;
+	private final Iterator<? extends T> iter;
+	private final Function<? super T, ? extends U> f;
 
-	public Map(Iterator<T> iter, Function<T, U> f) {
+	public Map(Iterator<? extends T> iter, Function<? super T, ? extends U> f) {
 		this.iter = iter;
 		this.f = f;
 	}
@@ -23,6 +23,11 @@ public class Map<T, U> implements Iterator<U> {
 	@Override
 	public SizeHint sizeHint() {
 		return iter.sizeHint();
+	}
+
+	@Override
+	public <V> Iterator<V> map(Function<? super U, ? extends V> f) {
+		return new Map<>(iter, this.f.andThen(f));
 	}
 
 	@Override

@@ -5,12 +5,13 @@ import leo.rustjava.iterator.Iterator;
 import leo.rustjava.iterator.SizeHint;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import static leo.rustjava.Option.None;
 
 public class Unique<T> implements Iterator<T> {
 	private final Iterator<T> iter;
-	private final HashSet<T> alreadyPresent;
+	private final Set<T> alreadyPresent;
 
 	public Unique(Iterator<T> iter) {
 		this.iter = iter;

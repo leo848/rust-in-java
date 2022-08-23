@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 
 public class Filter<T> implements Iterator<T> {
 	private final Iterator<T> iter;
-	private Predicate<T> predicate;
+	private final Predicate<T> predicate;
 
 	public Filter(Iterator<T> iter, Predicate<T> predicate) {
 		this.iter = iter;
@@ -26,15 +26,15 @@ public class Filter<T> implements Iterator<T> {
 		}
 	}
 
+	@SuppressWarnings("BoundedWildcard")
 	@Override
-	public SizeHint sizeHint() {
-		return new SizeHint(0, iter.sizeHint().upper());
+	public Iterator<T> filter(final Predicate<T> predicate) {
+		return new Filter<>(iter, this.predicate.and(predicate));
 	}
 
 	@Override
-	public Filter<T> filter(Predicate<T> predicate) {
-		this.predicate = this.predicate.and(predicate);
-		return this;
+	public SizeHint sizeHint() {
+		return new SizeHint(0, iter.sizeHint().upper());
 	}
 
 	@Override

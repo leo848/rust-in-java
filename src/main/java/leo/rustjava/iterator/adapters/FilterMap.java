@@ -7,10 +7,10 @@ import leo.rustjava.iterator.SizeHint;
 import java.util.function.Function;
 
 public class FilterMap<T> implements Iterator<T> {
-	private final Iterator<T> iter;
-	private final Function<T, Option<T>> f;
+	private final Iterator<? extends T> iter;
+	private final Function<? super T, ? extends Option<T>> f;
 
-	public FilterMap(Iterator<T> iter, Function<T, Option<T>> f) {
+	public FilterMap(Iterator<? extends T> iter, Function<? super T, ? extends Option<T>> f) {
 		this.iter = iter;
 		this.f = f;
 	}

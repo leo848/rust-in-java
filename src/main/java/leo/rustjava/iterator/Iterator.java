@@ -12,8 +12,7 @@ import java.util.*;
 import java.util.function.*;
 import java.util.stream.IntStream;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 import static leo.rustjava.iterator.Iterators.fromList;
 
 @SuppressWarnings("unused")
@@ -30,7 +29,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
 	# Methods that return a single value (not of the item type) #
 	###########################################################*/
 
-    default <B> B fold(B seed, BiFunction<B, Item, B> f) {
+    default <B> B fold(B seed, BiFunction<? super B, ? super Item, ? extends B> f) {
         B state = seed;
         while (true) {
             Option<Item> item = next();
@@ -41,7 +40,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
 
     Option<Item> next();
 
-    default <B> B tryFold(B seed, BiFunction<B, Item, Option<B>> f) {
+    default <B> B tryFold(B seed, BiFunction<? super B, ? super Item, ? extends Option<B>> f) {
         B state = seed;
         while (true) {
             Option<Item> item = next();
@@ -52,7 +51,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         }
     }
 
-    default Option<Integer> position(Predicate<Item> p) {
+    default Option<Integer> position(Predicate<? super Item> p) {
         return enumerate().fold(
                 None(), (state, pair) -> {
                     if (state.isSome() || !p.test(pair.right())) return state;
@@ -107,7 +106,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new Cycle<>(this);
     }
 
-    default Iterator<Item> scan1(BiFunction<Item, Item, Item> f) {
+    default Iterator<Item> scan1(BiFunction<? super Item, ? super Item, ? extends Item> f) {
         Option<Item> first = next();
         if (first.isNone()) throw new IllegalArgumentException("Empty iterator");
         return scan(first.unwrap(), f);
@@ -118,7 +117,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
     # Methods that return a new iterator #
     ####################################*/
 
-    default <U> Iterator<U> scan(U seed, BiFunction<U, Item, U> f) {
+    default <U> Iterator<U> scan(U seed, BiFunction<? super U, ? super Item, ? extends U> f) {
         return new Scan<>(this, f, seed);
     }
 
@@ -126,27 +125,27 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new Filter<>(this, p);
     }
 
-    default Iterator<Item> filterMap(Function<Item, Option<Item>> f) {
+    default Iterator<Item> filterMap(Function<? super Item, ? extends Option<Item>> f) {
         return new FilterMap<>(this, f);
     }
 
-    default <U> Iterator<U> flatMap(Function<Item, IntoIter<U>> f) {
+    default <U> Iterator<U> flatMap(Function<? super Item, IntoIter<U>> f) {
         return new FlatMap<>(this, f);
     }
 
-    default Iterator<Item> skipWhile(Predicate<Item> p) {
+    default Iterator<Item> skipWhile(Predicate<? super Item> p) {
         return new SkipWhile<>(this, p);
     }
 
-    default Iterator<Item> takeWhile(Predicate<Item> p) {
+    default Iterator<Item> takeWhile(Predicate<? super Item> p) {
         return new TakeWhile<>(this, p);
     }
 
-    default Iterator<Item> mapWhile(Function<Item, Option<Item>> f) {
+    default Iterator<Item> mapWhile(Function<? super Item, Option<Item>> f) {
         return new MapWhile<>(this, f);
     }
 
-    default Iterator<Item> inspect(Consumer<Item> c) {
+    default Iterator<Item> inspect(Consumer<? super Item> c) {
         return new Inspect<>(this, c);
     }
 
@@ -171,7 +170,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new InterleaveShortest<>(this, other);
     }
 
-    default <K> Iterator<Pair<K, List<Item>>> groupBy(Function<Item, K> key) {
+    default <K> Iterator<Pair<K, List<Item>>> groupBy(Function<? super Item, K> key) {
         return new GroupBy<>(this, key);
     }
 
@@ -208,7 +207,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new Dedup<>(this);
     }
 
-    default Iterator<Item> dedupBy(BiPredicate<Item, Item> cmp) {
+    default Iterator<Item> dedupBy(BiPredicate<? super Item, ? super Item> cmp) {
         return new DedupBy<>(this, cmp);
     }
 
@@ -220,7 +219,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
     # Itertools methods (not in standard library) #
     #############################################*/
 
-    default Iterator<Pair<Integer, Item>> dedupByWithCount(BiPredicate<Item, Item> cmp) {
+    default Iterator<Pair<Integer, Item>> dedupByWithCount(BiPredicate<? super Item, ? super Item> cmp) {
         return new DedupByWithCount<>(this, cmp);
     }
 
@@ -228,7 +227,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new Duplicates<>(this);
     }
 
-    default <U> Iterator<Item> duplicatesBy(Function<Item, U> id) {
+    default <U> Iterator<Item> duplicatesBy(Function<? super Item, U> id) {
         return new DuplicatesBy<>(this, id);
     }
 
@@ -236,7 +235,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new Unique<>(this);
     }
 
-    default <U> Iterator<Item> uniqueBy(Function<Item, U> id) {
+    default <U> Iterator<Item> uniqueBy(Function<? super Item, U> id) {
         return new UniqueBy<>(this, id);
     }
 
@@ -252,19 +251,19 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new Powerset<>(this);
     }
 
-    default Iterator<Item> padUsing(int min, Function<Integer, Item> function) {
+    default Iterator<Item> padUsing(int min, Function<? super Integer, ? extends Item> function) {
         return new PadUsing<>(this, min, function);
     }
 
-    default Iterator<Integer> positions(Predicate<Item> predicate) {
+    default Iterator<Integer> positions(Predicate<? super Item> predicate) {
         return new Positions<>(this, predicate);
     }
 
-    default Option<Pair<Integer, Item>> findPosition(Predicate<Item> predicate) {
+    default Option<Pair<Integer, Item>> findPosition(Predicate<? super Item> predicate) {
         return enumerate().find(pair -> predicate.test(pair.right()));
     }
 
-    default Option<Item> find(Predicate<Item> p) {
+    default Option<Item> find(Predicate<? super Item> p) {
         while (true) {
             var item = next();
             if (item.isNone()) break;
@@ -273,13 +272,13 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return None();
     }
 
-    default Option<Item> findOrFirst(Predicate<Item> predicate) {
+    default Option<Item> findOrFirst(Predicate<? super Item> predicate) {
         var first = next();
         if (first.map(predicate::test).contains(true)) return first;
         return find(predicate).or(first);
     }
 
-    default Option<Item> findOrLast(Predicate<Item> predicate) {
+    default Option<Item> findOrLast(Predicate<? super Item> predicate) {
         Option<Item> last = None();
         while (true) {
             var item = next();
@@ -294,7 +293,8 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return any(query::equals);
     }
 
-    default boolean any(Predicate<Item> p) {
+
+    default boolean any(Predicate<? super Item> p) {
         while (true) {
             var item = next();
             if (item.isNone()) break;
@@ -310,7 +310,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return all(content::equals);
     }
 
-    default boolean all(Predicate<Item> p) {
+    default boolean all(Predicate<? super Item> p) {
         while (true) {
             var item = next();
             if (item.isNone()) break;
@@ -335,7 +335,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return sb.toString();
     }
 
-    default void forEach(Consumer<Item> f) {
+    default void forEach(Consumer<? super Item> f) {
         fold(
                 0, (_state, item) -> {
                     f.accept(item);
@@ -348,7 +348,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return sortedBy(null);
     }
 
-    default Iterator<Item> sortedBy(Comparator<Item> cmp) {
+    default Iterator<Item> sortedBy(Comparator<? super Item> cmp) {
         var list = toList();
         list.sort(cmp);
         return fromList(list);
@@ -364,13 +364,13 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return list;
     }
 
-    default <K extends Comparable<K>> Iterator<Item> sortedByKey(Function<Item, K> key) {
+    default <K extends Comparable<K>> Iterator<Item> sortedByKey(Function<? super Item, K> key) {
         var list = map(e -> new Pair<>(key.apply(e), e)).toList();
         list.sort(Comparator.comparing(Pair::left));
         return fromList(list.stream().map(Pair::right).toList());
     }
 
-    default <U> Iterator<U> map(Function<Item, U> f) {
+    default <U> Iterator<U> map(Function<? super Item, ? extends U> f) {
         return new Map<>(this, f);
     }
 
@@ -412,29 +412,29 @@ public interface Iterator<Item> extends IntoIter<Item> {
     }
 
     @SuppressWarnings("unchecked")
-    default <K> Option<Item> maxByKey(Function<Item, K> key) {
+    default <K> Option<Item> maxByKey(Function<? super Item, K> key) {
         return map(e -> new Pair<>(key.apply(e), e))
                 .reduce((a, b) -> ((Comparable<K>) a.left()).compareTo(b.left()) > 0 ? a : b)
                 .map(Pair::right);
     }
 
-    default Option<Item> reduce(BiFunction<Item, Item, Item> f) {
+    default Option<Item> reduce(BiFunction<? super Item, ? super Item, ? extends Item> f) {
         Option<Item> first = next();
         if (first.isNone()) return None();
         return Some(fold(first.unwrap(), f));
     }
 
-    default <K> Option<Integer> positionMaxByKey(Function<Item, K> key) {
+    default <K> Option<Integer> positionMaxByKey(Function<? super Item, K> key) {
         return enumerate().maxByKey(pair -> key.apply(pair.right())).map(Pair::left);
     }
 
-    default Option<Integer> positionMaxBy(Comparator<Item> cmp) {
+    default Option<Integer> positionMaxBy(Comparator<? super Item> cmp) {
         return enumerate()
                 .maxBy(Comparator.comparing(Pair::right, cmp))
                 .map(Pair::left);
     }
 
-    default Option<Item> maxBy(Comparator<Item> c) {
+    default Option<Item> maxBy(Comparator<? super Item> c) {
         return reduce((x, y) -> c.compare(x, y) > 0 ? x : y);
     }
 
@@ -443,23 +443,23 @@ public interface Iterator<Item> extends IntoIter<Item> {
     }
 
     @SuppressWarnings("unchecked")
-    default <K> Option<Item> minByKey(Function<Item, K> key) {
+    default <K> Option<Item> minByKey(Function<? super Item, K> key) {
         return map(e -> new Pair<>(key.apply(e), e))
                 .reduce((a, b) -> ((Comparable<K>) a.left()).compareTo(b.left()) <= 0 ? a : b)
                 .map(Pair::right);
     }
 
-    default <K> Option<Integer> positionMinByKey(Function<Item, K> key) {
+    default <K> Option<Integer> positionMinByKey(Function<? super Item, K> key) {
         return enumerate().minByKey(pair -> key.apply(pair.right())).map(Pair::left);
     }
 
-    default Option<Integer> positionMinBy(Comparator<Item> cmp) {
+    default Option<Integer> positionMinBy(Comparator<? super Item> cmp) {
         return enumerate()
                 .minBy(Comparator.comparing(Pair::right, cmp))
                 .map(Pair::left);
     }
 
-    default Option<Item> minBy(Comparator<Item> c) {
+    default Option<Item> minBy(Comparator<? super Item> c) {
         return reduce((x, y) -> c.compare(x, y) <= 0 ? x : y);
     }
 
@@ -470,7 +470,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
     }
 
     @SuppressWarnings("unchecked")
-    default <K> Option<Pair<Item, Item>> minMaxByKey(Function<Item, K> key) {
+    default <K> Option<Pair<Item, Item>> minMaxByKey(Function<? super Item, K> key) {
         Option<Item> min = None();
         Option<Item> max = None();
         forEach(elt -> {
@@ -482,19 +482,19 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return min.zip(max);
     }
 
-    default <K> Option<Pair<Integer, Integer>> positionMinMaxByKey(Function<Item, K> key) {
+    default <K> Option<Pair<Integer, Integer>> positionMinMaxByKey(Function<? super Item, K> key) {
         return enumerate()
                 .minMaxByKey(pair -> key.apply(pair.right()))
                 .map(pair -> new Pair<>(pair.left().left(), pair.right().left()));
     }
 
-    default Option<Pair<Integer, Integer>> positionMinMaxBy(Comparator<Item> cmp) {
+    default Option<Pair<Integer, Integer>> positionMinMaxBy(Comparator<? super Item> cmp) {
         return enumerate()
                 .minMaxBy(Comparator.comparing(Pair::right, cmp))
                 .map(pair -> new Pair<>(pair.left().left(), pair.right().left()));
     }
 
-    default Option<Pair<Item, Item>> minMaxBy(Comparator<Item> cmp) {
+    default Option<Pair<Item, Item>> minMaxBy(Comparator<? super Item> cmp) {
         Option<Item> min = None();
         Option<Item> max = None();
         forEach(elt -> {
@@ -512,7 +512,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return counts;
     }
 
-    default <K> HashMap<K, Integer> countsBy(Function<Item, K> key) {
+    default <K> HashMap<K, Integer> countsBy(Function<? super Item, ? extends K> key) {
         HashMap<K, Integer> counts = new HashMap<>();
         forEach(elt -> {
             var eltKey = key.apply(elt);

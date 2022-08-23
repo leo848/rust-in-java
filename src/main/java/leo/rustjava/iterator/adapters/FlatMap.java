@@ -9,12 +9,12 @@ import java.util.function.Function;
 import static leo.rustjava.iterator.Iterators.empty;
 
 public class FlatMap<T, U> implements Iterator<U> {
-	private final Iterator<T> iter;
+	private final Iterator<? extends T> iter;
 	private final Function<T, Iterator<U>> f;
 
 	Iterator<U> currentIter = empty();
 
-	public FlatMap(Iterator<T> iter, Function<T, IntoIter<U>> f) {
+	public FlatMap(Iterator<? extends T> iter, Function<T, IntoIter<U>> f) {
 		this.iter = iter;
 		this.f = f.andThen(IntoIter::iter);
 	}

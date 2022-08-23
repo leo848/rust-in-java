@@ -9,10 +9,10 @@ import java.util.function.Function;
 import static leo.rustjava.Option.Some;
 
 public class Successors<T> implements Iterator<T> {
-	Function<T, Option<T>> successor;
+	Function<? super T, ? extends Option<T>> successor;
 	Option<T> value;
 
-	public Successors(T seed, Function<T, Option<T>> successor) {
+	public Successors(T seed, Function<? super T, ? extends Option<T>> successor) {
 		this.value = Some(seed);
 		this.successor = successor;
 	}

@@ -7,10 +7,10 @@ import java.util.function.BiFunction;
 
 public class Scan<T, U> implements Iterator<U> {
 	private final Iterator<T> iter;
-	private final BiFunction<U, T, U> f;
+	private final BiFunction<? super U, ? super T, ? extends U> f;
 	private U state;
 
-	public Scan(Iterator<T> iter, BiFunction<U, T, U> f, U state) {
+	public Scan(Iterator<T> iter, BiFunction<? super U, ? super T, ? extends U> f, U state) {
 		this.iter = iter;
 		this.f = f;
 		this.state = state;
