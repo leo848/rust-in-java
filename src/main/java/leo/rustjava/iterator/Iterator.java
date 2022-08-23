@@ -7,6 +7,7 @@ import leo.rustjava.iterator.adapters.*;
 import leo.rustjava.iterator.extra.*;
 import leo.rustjava.iterator.interfaces.ExactSizeIterator;
 import leo.rustjava.iterator.interfaces.IntoIter;
+import leo.rustjava.iterator.sources.ListIter;
 
 import java.util.*;
 import java.util.function.*;
@@ -344,11 +345,11 @@ public interface Iterator<Item> extends IntoIter<Item> {
         );
     }
 
-    default Iterator<Item> sorted() {
+    default ListIter<Item> sorted() {
         return sortedBy(null);
     }
 
-    default Iterator<Item> sortedBy(Comparator<? super Item> cmp) {
+    default ListIter<Item> sortedBy(Comparator<? super Item> cmp) {
         var list = toList();
         list.sort(cmp);
         return fromList(list);
@@ -364,7 +365,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return list;
     }
 
-    default <K extends Comparable<K>> Iterator<Item> sortedByKey(Function<? super Item, K> key) {
+    default <K extends Comparable<K>> ListIter<Item> sortedByKey(Function<? super Item, K> key) {
         var list = map(e -> new Pair<>(key.apply(e), e)).toList();
         list.sort(Comparator.comparing(Pair::left));
         return fromList(list.stream().map(Pair::right).toList());

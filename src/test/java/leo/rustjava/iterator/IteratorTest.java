@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 import static leo.rustjava.iterator.Iterators.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -581,6 +581,34 @@ class IteratorTest {
 		iterEquals(
 				of(345),
 				onceWith(() -> i + 40 + 5)
+		);
+	}
+
+	@Test
+	void haskellLargestDivisibleNumber() {
+		var number = range(0, 100000)
+				.rev()
+				.filter(i -> i % 3829 == 0)
+				.next();
+		assertEquals(Some(99554), number);
+	}
+
+	@Test
+	void haskellCollatz() {
+		Function<Integer, List<Integer>> chain = n -> {
+			var c = n;
+			List<Integer> list = new ArrayList<>();
+			do {
+				list.add(c);
+				c = c % 2 == 0 ? c / 2 : c * 3 + 1;
+				if (list.size() > 1000) throw new ArithmeticException();
+			} while (c != 1);
+			return list;
+		};
+		var longestCollatz = range(1, 100).sortedByKey(n -> chain.apply(n).size()).rev().take(5);
+		iterEquals(
+				of(97, 73, 55, 54, 27),
+				longestCollatz
 		);
 	}
 }
