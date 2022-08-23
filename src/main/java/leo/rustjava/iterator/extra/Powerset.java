@@ -9,8 +9,7 @@ import leo.rustjava.iterator.interfaces.FusedIterator;
 
 import java.util.List;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 
 public class Powerset<T> implements Iterator<List<T>>, ExactSizeIterator<List<T>>, FusedIterator<List<T>> {
 	private final List<T> cache;
@@ -24,7 +23,7 @@ public class Powerset<T> implements Iterator<List<T>>, ExactSizeIterator<List<T>
 	public Option<List<T>> next() {
 		if (binaryCounter >= (1 << cache.size())) return None();
 		var item = Some(Iterators
-				.fromList(cache)
+				.from(cache)
 				.enumerate()
 				.filter(pair -> (1 << pair.left() & binaryCounter) >> pair.left() != 0)
 				.map(Pair::right)

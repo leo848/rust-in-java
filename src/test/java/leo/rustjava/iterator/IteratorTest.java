@@ -350,11 +350,11 @@ class IteratorTest {
 
 		iterEquals(
 				of(1, 4, 5),
-				fromList(data).positions(v -> v % 2 == 0)
+				from(data).positions(v -> v % 2 == 0)
 		);
 		iterEquals(
 				of(0, 2, 3, 6, 7),
-				fromList(data).positions(v -> v % 2 == 1)
+				from(data).positions(v -> v % 2 == 1)
 		);
 	}
 
@@ -369,16 +369,16 @@ class IteratorTest {
 	@Test
 	void findOrLast() {
 		var numbers = range(1, 5).toList();
-		assertEquals(Some(4), fromList(numbers).findOrLast(x -> x > 5));
-		assertEquals(Some(3), fromList(numbers).findOrLast(x -> x > 2));
+		assertEquals(Some(4), from(numbers).findOrLast(x -> x > 5));
+		assertEquals(Some(3), from(numbers).findOrLast(x -> x > 2));
 		assertEquals(None(), new Empty<Integer>().findOrLast(x -> x > 5));
 	}
 
 	@Test
 	void findOrFirst() {
 		var numbers = range(1, 5).toList();
-		assertEquals(Some(1), fromList(numbers).findOrFirst(x -> x > 5));
-		assertEquals(Some(3), fromList(numbers).findOrFirst(x -> x > 2));
+		assertEquals(Some(1), from(numbers).findOrFirst(x -> x > 5));
+		assertEquals(Some(3), from(numbers).findOrFirst(x -> x > 2));
 		assertEquals(None(), new Empty<Integer>().findOrFirst(x -> x > 5));
 	}
 
@@ -441,17 +441,17 @@ class IteratorTest {
 	@Test
 	void positionMax() {
 		List<Integer> a = new ArrayList<>();
-		assertEquals(None(), fromList(a).positionMax());
+		assertEquals(None(), from(a).positionMax());
 		List<Integer> b = List.of(-3, 0, 1, 5, -10);
-		assertEquals(Some(3), fromList(b).positionMax());
+		assertEquals(Some(3), from(b).positionMax());
 		List<Integer> c = List.of(1, 1, -1, -1);
-		assertEquals(Some(1), fromList(c).positionMax());
+		assertEquals(Some(1), from(c).positionMax());
 	}
 
 	@Test
 	void positionMaxByKey() {
 		List<Integer> a = new ArrayList<>();
-		assertEquals(None(), fromList(a).positionMaxByKey(Math::abs));
+		assertEquals(None(), from(a).positionMaxByKey(Math::abs));
 		assertEquals(Some(4), of(-3, 0, 1, 5, -10).positionMaxByKey(Math::abs));
 		assertEquals(Some(3), of(1, 1, -1, -1).positionMaxByKey(Math::abs));
 	}
@@ -459,7 +459,7 @@ class IteratorTest {
 	@Test
 	void positionMin() {
 		List<Integer> a = new ArrayList<>();
-		assertEquals(None(), fromList(a).positionMin());
+		assertEquals(None(), from(a).positionMin());
 		assertEquals(Some(4), of(-3, 0, 1, 5, -10).positionMin());
 		assertEquals(Some(2), of(1, 1, -1, -1).positionMin());
 	}
@@ -467,7 +467,7 @@ class IteratorTest {
 	@Test
 	void positionMinByKey() {
 		List<Integer> a = new ArrayList<>();
-		assertEquals(None(), fromList(a).positionMinByKey(Math::abs));
+		assertEquals(None(), from(a).positionMinByKey(Math::abs));
 		assertEquals(Some(1), of(-3, 0, 1, 5, -10).positionMinByKey(Math::abs));
 		assertEquals(Some(0), of(1, 1, -1, -1).positionMinByKey(Math::abs));
 	}
@@ -475,7 +475,7 @@ class IteratorTest {
 	@Test
 	void positionMinMax() {
 		List<Integer> a = new ArrayList<>();
-		assertEquals(None(), fromList(a).positionMinMax());
+		assertEquals(None(), from(a).positionMinMax());
 		assertEquals(Some(new Pair<>(0, 0)), of(10).positionMinMax());
 		assertEquals(
 				Some(new Pair<>(4, 3)),
@@ -490,7 +490,7 @@ class IteratorTest {
 	@Test
 	void positionMinMaxByKey() {
 		List<Integer> a = new ArrayList<>();
-		assertEquals(None(), fromList(a).positionMinMaxByKey(Math::abs));
+		assertEquals(None(), from(a).positionMinMaxByKey(Math::abs));
 		assertEquals(Some(new Pair<>(0, 0)), of(10).positionMinMaxByKey(Math::abs));
 		assertEquals(
 				Some(new Pair<>(1, 4)),

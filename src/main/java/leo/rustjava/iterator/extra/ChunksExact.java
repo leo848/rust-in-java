@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static leo.rustjava.Option.*;
-import static leo.rustjava.iterator.Iterators.fromList;
+import static leo.rustjava.iterator.Iterators.from;
 
 public class ChunksExact<T> implements Iterator<ExactSizeIterator<T>>, FusedIterator<ExactSizeIterator<T>> {
 	private final Iterator<? extends T> iter;
@@ -25,6 +25,6 @@ public class ChunksExact<T> implements Iterator<ExactSizeIterator<T>>, FusedIter
 		List<T> list = new ArrayList<>();
 		iter.take(chunkSize).forEach(list::add);
 		if (list.size() < chunkSize) return None();
-		else return Some(fromList(list));
+		else return Some(from(list));
 	}
 }

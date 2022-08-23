@@ -14,7 +14,7 @@ import java.util.function.*;
 import java.util.stream.IntStream;
 
 import static leo.rustjava.Option.*;
-import static leo.rustjava.iterator.Iterators.fromList;
+import static leo.rustjava.iterator.Iterators.from;
 
 @SuppressWarnings("unused")
 public interface Iterator<Item> extends IntoIter<Item> {
@@ -352,7 +352,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
     default ListIter<Item> sortedBy(Comparator<? super Item> cmp) {
         var list = toList();
         list.sort(cmp);
-        return fromList(list);
+        return from(list);
     }
 
     default List<Item> toList() {
@@ -368,7 +368,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
     default <K extends Comparable<K>> ListIter<Item> sortedByKey(Function<? super Item, K> key) {
         var list = map(e -> new Pair<>(key.apply(e), e)).toList();
         list.sort(Comparator.comparing(Pair::left));
-        return fromList(list.stream().map(Pair::right).toList());
+        return from(list.stream().map(Pair::right).toList());
     }
 
     default <U> Iterator<U> map(Function<? super Item, ? extends U> f) {
@@ -386,7 +386,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
                 heap.add(e);
             }
         });
-        return fromList(heap.stream().toList());
+        return from(heap.stream().toList());
     }
 
     default Iterator<Item> take(int n) {

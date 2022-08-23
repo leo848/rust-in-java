@@ -1,6 +1,7 @@
 package leo.rustjava.iterator;
 
 import leo.rustjava.Option;
+import leo.rustjava.iterator.interfaces.IntoIter;
 import leo.rustjava.iterator.sources.*;
 
 import java.util.Arrays;
@@ -55,11 +56,15 @@ public class Iterators {
     }
 
     public static ListIter<Character> chars(final String string) {
-        return fromList(string.chars().mapToObj(num -> (char) num).toList());
+        return from(string.chars().mapToObj(num -> (char) num).toList());
     }
 
-    public static <Item> ListIter<Item> fromList(final List<Item> list) {
+    public static <Item> ListIter<Item> from(final List<Item> list) {
         return new ListIter<>(list);
+    }
+
+    public static <Item> Iterator<Item> from(IntoIter<Item> iter) {
+        return iter.iter();
     }
 
 }
