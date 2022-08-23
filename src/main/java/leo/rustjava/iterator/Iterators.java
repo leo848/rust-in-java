@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-@SuppressWarnings("BoundedWildcard")
 public class Iterators {
     @SafeVarargs
     public static <Item> ListIter<Item> of(final Item... items) {
@@ -23,7 +22,7 @@ public class Iterators {
         return new Repeat<>(item);
     }
 
-    public static <Item> RepeatWith<Item> repeatWith(final Supplier<Item> supplier) {
+    public static <Item> RepeatWith<Item> repeatWith(final Supplier<? extends Item> supplier) {
         return new RepeatWith<>(supplier);
     }
 
@@ -39,7 +38,7 @@ public class Iterators {
         return new Range(start, end + 1);
     }
 
-    public static <Item> Successors<Item> successors(final Item seed, final Function<Item, Option<Item>> f) {
+    public static <Item> Successors<Item> successors(final Item seed, final Function<? super Item, Option<Item>> f) {
         return new Successors<>(seed, f);
     }
 
@@ -51,7 +50,7 @@ public class Iterators {
         return new Once<>(item);
     }
 
-    public static <Item> OnceWith<Item> onceWith(final Supplier<Item> supplier) {
+    public static <Item> OnceWith<Item> onceWith(final Supplier<? extends Item> supplier) {
         return new OnceWith<>(supplier);
     }
 
