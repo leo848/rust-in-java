@@ -611,4 +611,32 @@ class IteratorTest {
 				longestCollatz
 		);
 	}
+
+	@Test
+	void skipSpecialization() {
+		Function<Integer, Integer> id = x -> x;
+		iterEquals(
+				range(0, 1000).skip(4).skip(3).skip(2),
+				range(0, 1000).skip(4).map(id).skip(3).map(id).skip(2)
+		);
+	}
+
+	@Test
+	void stepBySpecialization() {
+		Function<Integer, Integer> id = x -> x;
+		var iter1 = range(0, 1000).stepBy(4);
+		var iter2 = range(0, 1000).stepBy(4);
+		iter1.advanceBy(17);
+		iter2.advanceBy(17);
+
+		iterEquals(
+				iter1.map(id).stepBy(3).map(id).stepBy(2),
+				iter2.stepBy(3).stepBy(2)
+		);
+
+		iterEquals(
+				range(0, 1000).stepBy(4).map(id).stepBy(3).map(id).stepBy(2),
+				range(0, 1000).stepBy(4).stepBy(3).stepBy(2)
+		);
+	}
 }

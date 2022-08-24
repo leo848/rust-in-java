@@ -30,6 +30,7 @@ public class SkipWhile<T> implements Iterator<T> {
 		return item;
 	}
 
+
 	@Override
 	public String toString() {
 		return "SkipWhile { " + iter + " }";

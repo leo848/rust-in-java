@@ -37,6 +37,11 @@ public class Cycle<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> cycle() {
+		return this;
+	}
+
+	@Override
 	public SizeHint sizeHint() {
 		return this.index == 0 ? SizeHint.UNKNOWN : this.cache.isEmpty() ? SizeHint.ZERO : SizeHint.ENDLESS;
 	}

@@ -7,17 +7,22 @@ import leo.rustjava.iterator.interfaces.DoubleEndedIterator;
 public class Rev<T> implements Iterator<T>, DoubleEndedIterator<T> {
     private final DoubleEndedIterator<T> iter;
 
-    public Rev(DoubleEndedIterator<T> iter) {
-        this.iter = iter;
-    }
+	public Rev(DoubleEndedIterator<T> iter) {
+		this.iter = iter;
+	}
 
-    @Override
-    public Option<T> next() {
-        return iter.nextBack();
-    }
+	@Override
+	public Option<T> next() {
+		return iter.nextBack();
+	}
 
-    @Override
-    public Option<T> nextBack() {
-        return iter.next();
-    }
+	@Override
+	public DoubleEndedIterator<T> rev() {
+		return iter;
+	}
+
+	@Override
+	public Option<T> nextBack() {
+		return iter.next();
+	}
 }

@@ -522,6 +522,11 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return counts;
     }
 
+    default <U, V> Iterator<V> zipWith(Iterator<? extends U> other, BiFunction<? super Item, U, ? extends V> function) {
+        return this.zip(other).map(pair -> function.apply(pair.left(), pair.right()));
+    }
+
+
     default boolean equals(IntoIter<Item> iterable) {
         var iter = iterable.iter();
         if (this == iter) return true;

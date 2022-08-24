@@ -21,6 +21,11 @@ public class FilterMap<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> filterMap(Function<? super T, ? extends Option<T>> f) {
+		return new FilterMap<>(iter, this.f.andThen(option -> option.andThen(f)));
+	}
+
+	@Override
 	public SizeHint sizeHint() {
 		return new SizeHint(0, iter.sizeHint().upper());
 	}

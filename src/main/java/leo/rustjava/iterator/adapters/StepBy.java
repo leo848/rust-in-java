@@ -5,12 +5,12 @@ import leo.rustjava.iterator.Iterator;
 
 public class StepBy<T> implements Iterator<T> {
 	private final Iterator<T> iter;
-	private final int n;
+	private final int step;
 	private boolean firstTake;
 
 	public StepBy(Iterator<T> iter, int n) {
 		this.iter = iter;
-		this.n = n - 1;
+		this.step = n - 1;
 		this.firstTake = true;
 	}
 
@@ -20,8 +20,14 @@ public class StepBy<T> implements Iterator<T> {
 			firstTake = false;
 			return iter.next();
 		} else {
-			return iter.nth(n);
+			return iter.nth(step);
 		}
+	}
+
+	@Override
+	public Iterator<T> stepBy(int step) {
+		if (!firstTake) return Iterator.super.stepBy(step);
+		return new StepBy<>(iter, (this.step + 1) * step);
 	}
 
 	@Override

@@ -24,6 +24,14 @@ public class Inspect<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> inspect(Consumer<? super T> c) {
+		return new Inspect<>(iter, elt -> {
+			this.consumer.accept(elt);
+			c.accept(elt);
+		});
+	}
+
+	@Override
 	public SizeHint sizeHint() {
 		return iter.sizeHint();
 	}

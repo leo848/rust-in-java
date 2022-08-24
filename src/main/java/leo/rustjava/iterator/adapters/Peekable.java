@@ -24,6 +24,11 @@ public class Peekable<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Peekable<T> peekable() {
+		return this;
+	}
+
+	@Override
 	public int count() {
 		if (peeked.isSomeAnd(Option::isNone)) return 0;
 		else if (peeked.isSome()) return 1 + iter.count();

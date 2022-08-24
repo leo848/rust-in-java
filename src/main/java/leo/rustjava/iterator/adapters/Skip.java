@@ -24,6 +24,11 @@ public class Skip<T> implements Iterator<T> {
     }
 
     @Override
+    public Iterator<T> skip(int n) {
+        return new Skip<>(iter, this.n + n);
+    }
+
+    @Override
     public SizeHint sizeHint() {
         return new SizeHint(iter.sizeHint().lower(), iter.sizeHint().upper().map(n -> n - this.n));
     }
