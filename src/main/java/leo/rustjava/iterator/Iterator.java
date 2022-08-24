@@ -122,7 +122,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new Scan<>(this, f, seed);
     }
 
-    default Iterator<Item> filter(Predicate<Item> p) {
+    default Iterator<Item> filter(Predicate<? super Item> p) {
         return new Filter<>(this, p);
     }
 
@@ -171,7 +171,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new InterleaveShortest<>(this, other);
     }
 
-    default <K> Iterator<Pair<K, List<Item>>> groupBy(Function<? super Item, K> key) {
+    default <K> Iterator<Pair<K, List<Item>>> groupBy(Function<? super Item, ? extends K> key) {
         return new GroupBy<>(this, key);
     }
 

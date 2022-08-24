@@ -92,7 +92,7 @@ public class Empty<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeI
     }
 
     @Override
-    public Iterator<T> filter(Predicate<T> p) {
+    public Iterator<T> filter(Predicate<? super T> p) {
         return this;
     }
 
@@ -142,7 +142,7 @@ public class Empty<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeI
     }
 
     @Override
-    public <K> Iterator<Pair<K, List<T>>> groupBy(Function<? super T, K> key) {
+    public <K> Iterator<Pair<K, List<T>>> groupBy(Function<? super T, ? extends K> key) {
         return new Empty<>();
     }
 

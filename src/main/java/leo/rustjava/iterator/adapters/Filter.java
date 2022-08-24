@@ -8,9 +8,9 @@ import java.util.function.Predicate;
 
 public class Filter<T> implements Iterator<T> {
 	private final Iterator<T> iter;
-	private final Predicate<T> predicate;
+	private final Predicate<? super T> predicate;
 
-	public Filter(Iterator<T> iter, Predicate<T> predicate) {
+	public Filter(Iterator<T> iter, Predicate<? super T> predicate) {
 		this.iter = iter;
 		this.predicate = predicate;
 	}
@@ -26,10 +26,12 @@ public class Filter<T> implements Iterator<T> {
 		}
 	}
 
-	@SuppressWarnings("BoundedWildcard")
 	@Override
-	public Iterator<T> filter(final Predicate<T> predicate) {
-		return new Filter<>(iter, this.predicate.and(predicate));
+	public Iterator<T> filter(Predicate<? super T> predicate) {
+		return new Filter<>(iter, elt -> {
+			if (!Filter.this.predicate.test(elt)) return false;
+			return predicate.test(elt);
+		});
 	}
 
 	@Override

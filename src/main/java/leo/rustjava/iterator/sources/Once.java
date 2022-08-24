@@ -93,7 +93,7 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
     }
 
     @Override
-    public Iterator<T> filter(Predicate<T> p) {
+    public Iterator<T> filter(Predicate<? super T> p) {
         if (exhausted) return new Empty<>();
         return DoubleEndedIterator.super.filter(p);
     }
@@ -134,6 +134,7 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
         return new Chain<>(this, other);
     }
 
+    @SuppressWarnings("BoundedWildcard")
     @Override
     public Iterator<T> interleaveShortest(IntoIter<T> other) {
         var iter = other.iter();
@@ -144,7 +145,7 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
     }
 
     @Override
-    public <K> Iterator<Pair<K, List<T>>> groupBy(Function<? super T, K> key) {
+    public <K> Iterator<Pair<K, List<T>>> groupBy(Function<? super T, ? extends K> key) {
         if (exhausted) return new Empty<>();
         var item = next().unwrap();
         return new Once<>(new Pair<>(key.apply(item), List.of(item)));

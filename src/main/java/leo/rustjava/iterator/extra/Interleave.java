@@ -6,8 +6,7 @@ import leo.rustjava.iterator.SizeHint;
 import leo.rustjava.iterator.interfaces.FusedIterator;
 import leo.rustjava.iterator.interfaces.IntoIter;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 
 public class Interleave<T> implements Iterator<T>, FusedIterator<T> {
 	private final Option<Iterator<T>> iterA;
@@ -20,6 +19,7 @@ public class Interleave<T> implements Iterator<T>, FusedIterator<T> {
 		this.flip = false;
 	}
 
+	@SuppressWarnings("DuplicatedCode")
 	@Override
 	public Option<T> next() {
 		flip = !flip;

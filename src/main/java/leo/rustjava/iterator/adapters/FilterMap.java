@@ -30,7 +30,7 @@ public class FilterMap<T, U> implements Iterator<U> {
 
 
 	@Override
-	public Iterator<U> filter(Predicate<U> p) {
+	public Iterator<U> filter(Predicate<? super U> p) {
 		return new FilterMap<>(
 				iter,
 				this.f.andThen(
