@@ -663,4 +663,9 @@ class IteratorTest {
 				iterB.filter(n -> n % 4 == 2)
 		);
 	}
+
+	@Test
+	void i_rangeInclusive() {
+		assertEquals(3 + 4 + 5, rangeInclusive(3, 5).reduce(Integer::sum).unwrap());
+	}
 }

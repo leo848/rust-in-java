@@ -14,9 +14,9 @@ import static leo.rustjava.Option.*;
 
 public class GroupBy<T, K> implements Iterator<Pair<K, List<T>>> {
     private final Peekable<T> iter;
-    private final Function<? super T, K> key;
+    private final Function<? super T, ? extends K> key;
 
-    public GroupBy(Iterator<T> iter, Function<? super T, K> key) {
+    public GroupBy(Iterator<T> iter, Function<? super T, ? extends K> key) {
         this.iter = iter.peekable();
         this.key = key;
     }
@@ -31,7 +31,7 @@ public class GroupBy<T, K> implements Iterator<Pair<K, List<T>>> {
         while (true) {
             if (iter.peek().isNone() && iter.next().isNone()) break;
                 // SAFETY: if Peekable is implemented correctly this must never fail
-            else if (iter.peek().map(key).contains(firstKey))
+            else if (iter.peek().map(key).equals(Some(firstKey)))
                 list.add(iter.next().unwrap());
             else break;
         }

@@ -8,16 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="yay more generics (they are so great in java!)">
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="yay, more generics (they are so great in java!)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FilterMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FilterMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/GroupBy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/GroupBy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/Interleave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/Interleave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/InterleaveShortest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/InterleaveShortest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Empty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Once.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Once.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +90,7 @@
       <recent name="leo.rustjava.iterator.adapters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IteratorTest.nthBack">
+  <component name="RunManager" selected="JUnit.IteratorTest.i_rangeInclusive">
     <configuration name="IteratorTest.filterMapSpecialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
@@ -113,7 +107,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IteratorTest.haskellCollatz" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IteratorTest.i_rangeInclusive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
         <pattern>
@@ -123,7 +117,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
       <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
-      <option name="METHOD_NAME" value="haskellCollatz" />
+      <option name="METHOD_NAME" value="i_rangeInclusive" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -179,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IteratorTest.i_rangeInclusive" />
         <item itemvalue="JUnit.IteratorTest.nthBack" />
         <item itemvalue="JUnit.IteratorTest.filterMapSpecialization" />
         <item itemvalue="JUnit.IteratorTest.stepBySpecialization" />
         <item itemvalue="JUnit.IteratorTest.skipSpecialization" />
-        <item itemvalue="JUnit.IteratorTest.haskellCollatz" />
       </list>
     </recent_temporary>
   </component>
@@ -196,7 +190,7 @@
       <option name="presentableId" value="Default" />
       <updated>1660729446260</updated>
       <workItem from="1661275591584" duration="2368000" />
-      <workItem from="1661279195783" duration="14529000" />
+      <workItem from="1661279195783" duration="14811000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -275,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661349865391</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="yay, more generics (they are so great in java!)">
+      <created>1661351805930</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1661351805930</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +308,8 @@
     <MESSAGE value="FilterMap::filter specialization" />
     <MESSAGE value="whoops a filterMap couldn't actually map&#10;also DoubleEndedIterator::nthBack called Iterator::next instead of DoubleEndedIterator::nextBack" />
     <MESSAGE value="yay more generics (they are so great in java!)" />
-    <option name="LAST_COMMIT_MESSAGE" value="yay more generics (they are so great in java!)" />
+    <MESSAGE value="yay, more generics (they are so great in java!)" />
+    <option name="LAST_COMMIT_MESSAGE" value="yay, more generics (they are so great in java!)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
