@@ -5,6 +5,9 @@ import leo.rustjava.iterator.Iterator;
 import leo.rustjava.iterator.SizeHint;
 
 import java.util.function.Function;
+import java.util.function.Predicate;
+
+import static leo.rustjava.Option.*;
 
 public class FilterMap<T> implements Iterator<T> {
 	private final Iterator<? extends T> iter;
@@ -23,6 +26,17 @@ public class FilterMap<T> implements Iterator<T> {
 	@Override
 	public Iterator<T> filterMap(Function<? super T, ? extends Option<T>> f) {
 		return new FilterMap<>(iter, this.f.andThen(option -> option.andThen(f)));
+	}
+
+
+	@Override
+	public Iterator<T> filter(Predicate<T> p) {
+		return new FilterMap<>(
+				iter,
+				this.f.andThen(
+						option -> option.andThen(elt -> p.test(elt) ? Some(elt) : None())
+				)
+		);
 	}
 
 	@Override

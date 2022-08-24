@@ -621,22 +621,44 @@ class IteratorTest {
 		);
 	}
 
+	private <T> T id(T t) {
+		return t;
+	}
+
 	@Test
 	void stepBySpecialization() {
-		Function<Integer, Integer> id = x -> x;
 		var iter1 = range(0, 1000).stepBy(4);
 		var iter2 = range(0, 1000).stepBy(4);
 		iter1.advanceBy(17);
 		iter2.advanceBy(17);
 
 		iterEquals(
-				iter1.map(id).stepBy(3).map(id).stepBy(2),
+				iter1.map(this::id).stepBy(3).map(this::id).stepBy(2),
 				iter2.stepBy(3).stepBy(2)
 		);
 
 		iterEquals(
-				range(0, 1000).stepBy(4).map(id).stepBy(3).map(id).stepBy(2),
+				range(0, 1000).stepBy(4).map(this::id).stepBy(3).map(this::id).stepBy(2),
 				range(0, 1000).stepBy(4).stepBy(3).stepBy(2)
+		);
+	}
+
+	@Test
+	void filterMapSpecialization() {
+		iterEquals(
+				range(0, 1000).filterMap(n -> n % 2 == 0 ? Some(n * 2) : None()).map(this::id).filter(n -> n % 8 == 4),
+				range(0, 1000).filterMap(n -> n % 2 == 0 ? Some(n * 2) : None()).filter(n -> n % 8 == 4)
+		);
+
+		var iterA = range(0, 1000).filterMap(n -> Integer.bitCount(n) % 2 == 0 ? Some(Integer.bitCount(n)) : None());
+		var iterB = range(0, 1000).filterMap(n -> Integer.bitCount(n) % 2 == 0 ? Some(Integer.bitCount(n)) : None());
+
+		iterA.advanceBy(10);
+		iterB.advanceBy(10);
+
+		iterEquals(
+				iterA.map(this::id).filter(n -> n % 4 == 2),
+				iterB.filter(n -> n % 4 == 2)
 		);
 	}
 }

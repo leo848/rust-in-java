@@ -8,17 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="complete specialization for Once (and all)">
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="further specializations + test&#10;+ zipWith method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Cycle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FilterMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FilterMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Inspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Inspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Peekable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Peekable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Rev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Rev.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Skip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Skip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/SkipWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/SkipWhile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/StepBy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/StepBy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +90,23 @@
       <recent name="leo.rustjava.iterator.adapters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IteratorTest.stepBySpecialization">
+  <component name="RunManager" selected="JUnit.IteratorTest.filterMapSpecialization">
+    <configuration name="IteratorTest.filterMapSpecialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RustJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leo.rustjava.iterator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
+      <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
+      <option name="METHOD_NAME" value="filterMapSpecialization" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="IteratorTest.haskellCollatz" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
@@ -126,22 +134,6 @@
       <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
       <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
       <option name="METHOD_NAME" value="haskellLargestDivisibleNumber" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IteratorTest.i_onceWith" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="RustJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leo.rustjava.iterator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
-      <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
-      <option name="METHOD_NAME" value="i_onceWith" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -181,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IteratorTest.filterMapSpecialization" />
         <item itemvalue="JUnit.IteratorTest.stepBySpecialization" />
         <item itemvalue="JUnit.IteratorTest.skipSpecialization" />
         <item itemvalue="JUnit.IteratorTest.haskellCollatz" />
         <item itemvalue="JUnit.IteratorTest.haskellLargestDivisibleNumber" />
-        <item itemvalue="JUnit.IteratorTest.i_onceWith" />
       </list>
     </recent_temporary>
   </component>
@@ -198,7 +190,7 @@
       <option name="presentableId" value="Default" />
       <updated>1660729446260</updated>
       <workItem from="1661275591584" duration="2368000" />
-      <workItem from="1661279195783" duration="10395000" />
+      <workItem from="1661279195783" duration="11616000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -256,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661286836252</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="further specializations + test&#10;+ zipWith method">
+      <created>1661347666103</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1661347666103</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +283,8 @@
     <MESSAGE value="generalization of Iterators" />
     <MESSAGE value="rename `fromList` to `from`, add `from(IntoIter&lt;Item&gt;)`" />
     <MESSAGE value="complete specialization for Once (and all)" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete specialization for Once (and all)" />
+    <MESSAGE value="further specializations + test&#10;+ zipWith method" />
+    <option name="LAST_COMMIT_MESSAGE" value="further specializations + test&#10;+ zipWith method" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
