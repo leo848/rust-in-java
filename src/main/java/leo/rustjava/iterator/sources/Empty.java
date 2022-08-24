@@ -97,8 +97,8 @@ public class Empty<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeI
     }
 
     @Override
-    public Iterator<T> filterMap(Function<? super T, ? extends Option<T>> f) {
-        return this;
+    public <U> Iterator<U> filterMap(Function<? super T, ? extends Option<U>> f) {
+        return new Empty<>();
     }
 
     @Override

@@ -564,7 +564,9 @@ class IteratorTest {
 
 	@Test
 	void nthBack() {
-		assertEquals(Some(2), rangeInclusive(-2_000_000_000, 4).nthBack(3));
+		assertEquals(Some(1), rangeInclusive(-2_000_000_000, 4).nthBack(3));
+		assertEquals(Some(1), of(1, 2, 3).nthBack(2));
+		assertEquals(None(), of(1, 2, 3).nthBack(10));
 	}
 
 	@Test

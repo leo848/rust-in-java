@@ -126,7 +126,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return new Filter<>(this, p);
     }
 
-    default Iterator<Item> filterMap(Function<? super Item, ? extends Option<Item>> f) {
+    default <U> Iterator<U> filterMap(Function<? super Item, ? extends Option<U>> f) {
         return new FilterMap<>(this, f);
     }
 

@@ -9,33 +9,41 @@ import java.util.function.Predicate;
 
 import static leo.rustjava.Option.*;
 
-public class FilterMap<T> implements Iterator<T> {
+public class FilterMap<T, U> implements Iterator<U> {
 	private final Iterator<? extends T> iter;
-	private final Function<? super T, ? extends Option<T>> f;
+	private final Function<? super T, ? extends Option<U>> f;
 
-	public FilterMap(Iterator<? extends T> iter, Function<? super T, ? extends Option<T>> f) {
+	public FilterMap(Iterator<? extends T> iter, Function<? super T, ? extends Option<U>> f) {
 		this.iter = iter;
 		this.f = f;
 	}
 
 	@Override
-	public Option<T> next() {
+	public Option<U> next() {
 		return iter.next().andThen(f);
 	}
 
 	@Override
-	public Iterator<T> filterMap(Function<? super T, ? extends Option<T>> f) {
+	public <V> Iterator<V> filterMap(Function<? super U, ? extends Option<V>> f) {
 		return new FilterMap<>(iter, this.f.andThen(option -> option.andThen(f)));
 	}
 
 
 	@Override
-	public Iterator<T> filter(Predicate<T> p) {
+	public Iterator<U> filter(Predicate<U> p) {
 		return new FilterMap<>(
 				iter,
 				this.f.andThen(
 						option -> option.andThen(elt -> p.test(elt) ? Some(elt) : None())
 				)
+		);
+	}
+
+	@Override
+	public <V> Iterator<V> map(Function<? super U, ? extends V> f) {
+		return new FilterMap<>(
+				iter,
+				this.f.andThen(opt -> opt.map(f))
 		);
 	}
 

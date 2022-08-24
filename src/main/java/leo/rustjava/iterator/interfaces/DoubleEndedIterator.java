@@ -11,8 +11,8 @@ public interface DoubleEndedIterator<Item> extends Iterator<Item> {
 
     default boolean advanceBackBy(int n) {
         for (int i = 0; i < n; i++) {
-            if (next().isNone()) {
-                return false;
+            if (nextBack().isNone()) {
+	            return false;
             }
         }
         return true;

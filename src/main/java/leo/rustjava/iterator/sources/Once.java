@@ -99,7 +99,7 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
     }
 
     @Override
-    public Iterator<T> filterMap(Function<? super T, ? extends Option<T>> f) {
+    public <U> Iterator<U> filterMap(Function<? super T, ? extends Option<U>> f) {
         if (exhausted) return new Empty<>();
         return DoubleEndedIterator.super.filterMap(f);
     }
