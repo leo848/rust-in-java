@@ -668,4 +668,17 @@ class IteratorTest {
 	void i_rangeInclusive() {
 		assertEquals(3 + 4 + 5, rangeInclusive(3, 5).reduce(Integer::sum).unwrap());
 	}
+
+	@Test
+	void rangeContains() {
+		assertFalse(range(3, 5).contains(2));
+		assertTrue(range(3, 5).contains(3));
+		assertTrue(range(3, 5).contains(4));
+		assertFalse(range(3, 5).contains(5));
+	}
+
+	@Test
+	void rangeSpec() {
+		iterEquals(of(3, 4, 5), range(3, 100).take(3));
+	}
 }

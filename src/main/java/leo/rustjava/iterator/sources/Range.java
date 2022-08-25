@@ -6,9 +6,12 @@ import leo.rustjava.iterator.interfaces.DoubleEndedIterator;
 import leo.rustjava.iterator.interfaces.ExactSizeIterator;
 import leo.rustjava.iterator.interfaces.FusedIterator;
 
+import static leo.rustjava.Option.*;
+import static leo.rustjava.iterator.Iterators.from;
+
 public class Range implements Iterator<Integer>, DoubleEndedIterator<Integer>, ExactSizeIterator<Integer>, FusedIterator<Integer> {
-	int start;
-	int end;
+	private int start;
+	private int end;
 
 	public Range(int start, int end) {
 		this.start = start;
@@ -18,10 +21,15 @@ public class Range implements Iterator<Integer>, DoubleEndedIterator<Integer>, E
 	@Override
 	public Option<Integer> next() {
 		if (start < end) {
-			return Option.Some(start++);
+			return Some(start++);
 		} else {
-			return Option.None();
+			return None();
 		}
+	}
+
+	@Override
+	public boolean contains(Integer query) {
+		return query < end && query >= start;
 	}
 
 	@Override
@@ -30,11 +38,75 @@ public class Range implements Iterator<Integer>, DoubleEndedIterator<Integer>, E
 	}
 
 	@Override
+	public boolean isEmpty() {
+		return start >= end;
+	}
+
+	@Override
+	public Iterator<Integer> dedup() {
+		return this;
+	}
+
+	@Override
+	public Iterator<Integer> skip(int n) {
+		start += n;
+		return this;
+	}
+
+	@Override
+	public Option<Integer> last() {
+		if (isEmpty()) return None();
+		start = end - 1;
+		return next();
+	}
+
+	@Override
+	public Iterator<Integer> duplicates() {
+		return new Empty<>();
+	}
+
+	@Override
+	public Iterator<Integer> unique() {
+		return this;
+	}
+
+	@Override
+	public boolean allEqual() {
+		return len() <= 1;
+	}
+
+	@Override
+	public boolean allUnique() {
+		return true;
+	}
+
+	@Override
+	public ListIter<Integer> sorted() {
+		return from(toList());
+	}
+
+	@Override
+	public Option<Integer> positionMin() {
+		return Some(0);
+	}
+
+	@Override
+	public Iterator<Integer> take(int n) {
+		end = start + n;
+		return this;
+	}
+
+	@Override
+	public Iterator<Integer> kSmallest(int k) {
+		return take(k);
+	}
+
+	@Override
 	public Option<Integer> nextBack() {
 		if (start < end) {
-			return Option.Some(--end);
+			return Some(--end);
 		} else {
-			return Option.None();
+			return None();
 		}
 	}
 

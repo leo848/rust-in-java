@@ -8,9 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="yay, more generics (they are so great in java!)">
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="groupby + iteratortest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/GroupBy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/extra/GroupBy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Range.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,22 +51,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Project.color&quot;: &quot;0b341b&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/leo/Projects/IdeaProjects/RustJava/src/main/java/leo/rustjava/iterator/sources&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/tmp/rustinjavauml&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Project.color": "0b341b",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_directory_selection": "/home/leo/Projects/IdeaProjects/RustJava/src/main/java/leo/rustjava/iterator/sources",
+    "last_opened_file_path": "/tmp/rustinjavauml",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -90,7 +90,7 @@
       <recent name="leo.rustjava.iterator.adapters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IteratorTest.i_rangeInclusive">
+  <component name="RunManager" selected="JUnit.IteratorTest.rangeSpec">
     <configuration name="IteratorTest.filterMapSpecialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
@@ -139,7 +139,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IteratorTest.skipSpecialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IteratorTest.rangeContains" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
         <pattern>
@@ -149,13 +149,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
       <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
-      <option name="METHOD_NAME" value="skipSpecialization" />
+      <option name="METHOD_NAME" value="rangeContains" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IteratorTest.stepBySpecialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IteratorTest.rangeSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
         <pattern>
@@ -165,7 +165,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
       <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
-      <option name="METHOD_NAME" value="stepBySpecialization" />
+      <option name="METHOD_NAME" value="rangeSpec" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -173,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IteratorTest.rangeSpec" />
+        <item itemvalue="JUnit.IteratorTest.rangeContains" />
         <item itemvalue="JUnit.IteratorTest.i_rangeInclusive" />
         <item itemvalue="JUnit.IteratorTest.nthBack" />
         <item itemvalue="JUnit.IteratorTest.filterMapSpecialization" />
-        <item itemvalue="JUnit.IteratorTest.stepBySpecialization" />
-        <item itemvalue="JUnit.IteratorTest.skipSpecialization" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +190,7 @@
       <option name="presentableId" value="Default" />
       <updated>1660729446260</updated>
       <workItem from="1661275591584" duration="2368000" />
-      <workItem from="1661279195783" duration="14811000" />
+      <workItem from="1661279195783" duration="17532000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -276,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661351805930</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="groupby + iteratortest">
+      <created>1661352151595</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1661352151595</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +316,8 @@
     <MESSAGE value="whoops a filterMap couldn't actually map&#10;also DoubleEndedIterator::nthBack called Iterator::next instead of DoubleEndedIterator::nextBack" />
     <MESSAGE value="yay more generics (they are so great in java!)" />
     <MESSAGE value="yay, more generics (they are so great in java!)" />
-    <option name="LAST_COMMIT_MESSAGE" value="yay, more generics (they are so great in java!)" />
+    <MESSAGE value="groupby + iteratortest" />
+    <option name="LAST_COMMIT_MESSAGE" value="groupby + iteratortest" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
