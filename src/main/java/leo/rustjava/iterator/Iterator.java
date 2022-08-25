@@ -7,6 +7,7 @@ import leo.rustjava.iterator.adapters.*;
 import leo.rustjava.iterator.extra.*;
 import leo.rustjava.iterator.interfaces.ExactSizeIterator;
 import leo.rustjava.iterator.interfaces.IntoIter;
+import leo.rustjava.iterator.sources.Empty;
 import leo.rustjava.iterator.sources.ListIter;
 
 import java.util.*;
@@ -18,6 +19,8 @@ import static leo.rustjava.iterator.Iterators.from;
 
 @SuppressWarnings("unused")
 public interface Iterator<Item> extends IntoIter<Item> {
+    Option<Item> next();
+
     default SizeHint sizeHint() {
         return SizeHint.UNKNOWN;
     }
@@ -38,8 +41,6 @@ public interface Iterator<Item> extends IntoIter<Item> {
             state = f.apply(state, item.unwrap());
         }
     }
-
-    Option<Item> next();
 
     default <B> B tryFold(B seed, BiFunction<? super B, ? super Item, ? extends Option<B>> f) {
         B state = seed;
@@ -151,6 +152,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
     }
 
     default Iterator<Item> skip(int n) {
+        if (n == 0) return this;
         return new Skip<>(this, n);
     }
 
@@ -390,6 +392,7 @@ public interface Iterator<Item> extends IntoIter<Item> {
     }
 
     default Iterator<Item> take(int n) {
+        if (n == 0) return new Empty<>();
         return new Take<>(this, n);
     }
 
