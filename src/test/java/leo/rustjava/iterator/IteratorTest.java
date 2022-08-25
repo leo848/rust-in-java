@@ -1,6 +1,8 @@
 package leo.rustjava.iterator;
 
+import leo.rustjava.Option;
 import leo.rustjava.Pair;
+import leo.rustjava.iterator.interfaces.EndlessIterator;
 import leo.rustjava.iterator.sources.Empty;
 import org.junit.jupiter.api.Test;
 
@@ -680,5 +682,29 @@ class IteratorTest {
 	@Test
 	void rangeSpec() {
 		iterEquals(of(3, 4, 5), range(3, 100).take(3));
+	}
+
+	@Test
+	void anonymousFibonacci() {
+		class Fibonacci implements Iterator<Integer>, EndlessIterator<Integer> {
+			int lower = 0;
+			int higher = 1;
+
+			public Fibonacci() {
+			}
+
+			@Override
+			public Option<Integer> next() {
+				int temp = higher;
+				higher = lower + higher;
+				lower = temp;
+				return Some(lower);
+			}
+		}
+
+		iterEquals(
+				of(1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89),
+				new Fibonacci().takeWhile(n -> n < 100)
+		);
 	}
 }

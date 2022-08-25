@@ -8,9 +8,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="groupby + iteratortest">
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="some range specialization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Range.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,8 +89,8 @@
       <recent name="leo.rustjava.iterator.adapters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IteratorTest.rangeSpec">
-    <configuration name="IteratorTest.filterMapSpecialization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.IteratorTest.anonymousFibonacci">
+    <configuration name="IteratorTest.anonymousFibonacci" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
         <pattern>
@@ -101,7 +100,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
       <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
-      <option name="METHOD_NAME" value="filterMapSpecialization" />
+      <option name="METHOD_NAME" value="anonymousFibonacci" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -173,11 +172,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IteratorTest.anonymousFibonacci" />
         <item itemvalue="JUnit.IteratorTest.rangeSpec" />
         <item itemvalue="JUnit.IteratorTest.rangeContains" />
         <item itemvalue="JUnit.IteratorTest.i_rangeInclusive" />
         <item itemvalue="JUnit.IteratorTest.nthBack" />
-        <item itemvalue="JUnit.IteratorTest.filterMapSpecialization" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +189,7 @@
       <option name="presentableId" value="Default" />
       <updated>1660729446260</updated>
       <workItem from="1661275591584" duration="2368000" />
-      <workItem from="1661279195783" duration="17532000" />
+      <workItem from="1661279195783" duration="17904000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -283,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661352151595</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="some range specialization">
+      <created>1661446300096</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1661446300096</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +323,8 @@
     <MESSAGE value="yay more generics (they are so great in java!)" />
     <MESSAGE value="yay, more generics (they are so great in java!)" />
     <MESSAGE value="groupby + iteratortest" />
-    <option name="LAST_COMMIT_MESSAGE" value="groupby + iteratortest" />
+    <MESSAGE value="some range specialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="some range specialization" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
