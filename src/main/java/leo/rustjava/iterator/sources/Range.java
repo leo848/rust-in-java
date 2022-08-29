@@ -29,7 +29,10 @@ public class Range implements Iterator<Integer>, DoubleEndedIterator<Integer>, E
 
 	@Override
 	public boolean contains(Integer query) {
-		return query < end && query >= start;
+		boolean result = query < end && query >= start;
+		if (!result) start = end;
+		else start = query + 1;
+		return result;
 	}
 
 	@Override

@@ -18,6 +18,6 @@ public class EndlessRange implements Iterator<Integer>, EndlessIterator<Integer>
 
     @Override
     public String toString() {
-        return "EndlessRange { n: " + n + " }";
+        return n + "..";
     }
 }
