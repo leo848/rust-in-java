@@ -8,7 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="better exceptions for EndlessIterator">
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="contains test: Range.contains(int)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" afterDir="false" />
     </list>
@@ -50,22 +50,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Project.color": "0b341b",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_directory_selection": "/home/leo/Projects/IdeaProjects/RustJava/src/main/java/leo/rustjava/iterator/sources",
-    "last_opened_file_path": "/tmp/rustinjavauml",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Project.color&quot;: &quot;0b341b&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/leo/Projects/IdeaProjects/RustJava/src/main/java/leo/rustjava/iterator/sources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/leo/5AB0-8526/Werwolf&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.maddyhome.idea.vim.ui.VimEmulationConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -89,7 +89,7 @@
       <recent name="leo.rustjava.iterator.adapters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IteratorTest.contains">
+  <component name="RunManager" selected="JUnit.IteratorTest.anonymousCollatz">
     <configuration name="IteratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
@@ -101,6 +101,22 @@
       <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
       <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IteratorTest.anonymousCollatz" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RustJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leo.rustjava.iterator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
+      <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
+      <option name="METHOD_NAME" value="anonymousCollatz" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,22 +153,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IteratorTest.rangeContains" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="RustJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leo.rustjava.iterator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
-      <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
-      <option name="METHOD_NAME" value="rangeContains" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="IteratorTest.rangeSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
@@ -171,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.IteratorTest.contains" />
+        <item itemvalue="JUnit.IteratorTest.anonymousCollatz" />
         <item itemvalue="JUnit.IteratorTest" />
+        <item itemvalue="JUnit.IteratorTest.contains" />
         <item itemvalue="JUnit.IteratorTest.anonymousFibonacci" />
         <item itemvalue="JUnit.IteratorTest.rangeSpec" />
-        <item itemvalue="JUnit.IteratorTest.rangeContains" />
       </list>
     </recent_temporary>
   </component>
@@ -188,7 +188,9 @@
       <option name="presentableId" value="Default" />
       <updated>1660729446260</updated>
       <workItem from="1661275591584" duration="2368000" />
-      <workItem from="1661279195783" duration="20921000" />
+      <workItem from="1661279195783" duration="22688000" />
+      <workItem from="1661504546843" duration="771000" />
+      <workItem from="1661788705968" duration="2278000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -309,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661448179506</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="contains test: Range.contains(int)">
+      <created>1661453585567</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1661453585567</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,7 +356,8 @@
     <MESSAGE value="fibonacci test" />
     <MESSAGE value="rearrangement in Iterator.java" />
     <MESSAGE value="better exceptions for EndlessIterator" />
-    <option name="LAST_COMMIT_MESSAGE" value="better exceptions for EndlessIterator" />
+    <MESSAGE value="contains test: Range.contains(int)" />
+    <option name="LAST_COMMIT_MESSAGE" value="contains test: Range.contains(int)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

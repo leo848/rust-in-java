@@ -707,4 +707,39 @@ class IteratorTest {
 				new Fibonacci().takeWhile(n -> n < 100)
 		);
 	}
+
+	@Test
+	void anonymousCollatz() {
+		class CollatzConjecture implements Iterator<Iterator<Integer>>, EndlessIterator<Iterator<Integer>> {
+			private int n = 1;
+
+			public CollatzConjecture() {
+			}
+
+			@Override
+			public Option<Iterator<Integer>> next() {
+				return Some(calcChain(n++));
+			}
+
+			private Iterator<Integer> calcChain(int n) {
+				return successors(n, integer -> {
+					if (integer <= 1) return None();
+					else if (integer % 2 == 0) return Some(integer / 2);
+					else return Some(integer * 3 + 1);
+				});
+			}
+		}
+
+		iterEquals(
+				of(
+						List.of(10, 5, 16, 8, 4, 2, 1),
+						List.of(11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1),
+						List.of(12, 6, 3, 10, 5, 16, 8, 4, 2, 1),
+						List.of(13, 40, 20, 10, 5, 16, 8, 4, 2, 1),
+						List.of(14, 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1),
+						List.of(15, 46, 23, 70, 35, 106, 53, 160, 80, 40, 20, 10, 5, 16, 8, 4, 2, 1)
+				),
+				new CollatzConjecture().skip(9).take(6).map(Iterator::toList)
+		);
+	}
 }
