@@ -8,10 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="IteratorTest.anonymousCollatz test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/EndlessRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/EndlessRange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Range.java" afterDir="false" />
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="Range contains now exhausts again">
       <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +189,7 @@
       <workItem from="1661275591584" duration="2368000" />
       <workItem from="1661279195783" duration="22688000" />
       <workItem from="1661504546843" duration="771000" />
-      <workItem from="1661788705968" duration="2827000" />
+      <workItem from="1661788705968" duration="2889000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -327,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661791078321</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Range contains now exhausts again">
+      <created>1661791581625</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1661791581625</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,7 +371,8 @@
     <MESSAGE value="better exceptions for EndlessIterator" />
     <MESSAGE value="contains test: Range.contains(int)" />
     <MESSAGE value="IteratorTest.anonymousCollatz test" />
-    <option name="LAST_COMMIT_MESSAGE" value="IteratorTest.anonymousCollatz test" />
+    <MESSAGE value="Range contains now exhausts again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Range contains now exhausts again" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

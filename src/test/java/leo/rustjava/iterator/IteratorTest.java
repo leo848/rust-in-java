@@ -386,7 +386,7 @@ class IteratorTest {
 
 	@Test
 	void contains() {
-		var numbers = range(1, 5).map(this::id);
+		var numbers = range(1, 5);
 		assertTrue(numbers.contains(2));
 		assertEquals(Some(3), numbers.next());
 		assertFalse(numbers.contains(5));
