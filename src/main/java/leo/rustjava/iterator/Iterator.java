@@ -29,6 +29,17 @@ public interface Iterator<Item> extends IntoIter<Item> {
         return fold(0, (acc, item) -> acc + 1);
     }
 
+    /*#####################################################################
+    # Static methods. Use these using `Iterator::apply(Iterator::method)` #
+    #####################################################################*/
+    static int sum(Iterator<Integer> iter) {
+        return iter.reduce(Integer::sum).unwrapOr(0);
+    }
+
+    static int product(Iterator<Integer> iter) {
+        return iter.reduce((acc, elt) -> acc * elt).unwrapOr(1);
+    }
+
 	/*###########################################################
 	# Methods that return a single value (not of the item type) #
 	###########################################################*/
@@ -540,5 +551,17 @@ public interface Iterator<Item> extends IntoIter<Item> {
             if (myItem.or(theirItem).isNone()) return true;
             if (!myItem.equals(theirItem)) return false;
         }
+    }
+
+    static <T> Iterator<T> flatten(Iterator<Iterator<T>> iter) {
+        return new Flatten<>(iter);
+    }
+
+    default <U> U apply(Function<? super Iterator<Item>, U> function) {
+        return function.apply(this);
+    }
+
+    default <U> Iterator<U> adapt(Function<Iterator<Item>, ? extends Iterator<U>> function) {
+        return new Adapt<>(this, function);
     }
 }

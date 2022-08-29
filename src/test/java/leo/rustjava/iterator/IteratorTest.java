@@ -742,4 +742,12 @@ class IteratorTest {
 				new CollatzConjecture().skip(9).take(6).map(Iterator::toList)
 		);
 	}
+
+	@Test
+	void applySum() {
+		assertEquals(
+				42,
+				(Integer) of(20, 30, -10, 2).apply(Iterator::sum)
+		);
+	}
 }
