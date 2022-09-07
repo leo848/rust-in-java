@@ -122,7 +122,7 @@ public class Adapt<T, U> implements Iterator<U> {
 	}
 
 	@Override
-	public <U1> Iterator<U1> flatMap(Function<? super U, IntoIter<U1>> f) {
+	public <U1> Iterator<U1> flatMap(Function<? super U, ? extends IntoIter<U1>> f) {
 		return iter.flatMap(f);
 	}
 
