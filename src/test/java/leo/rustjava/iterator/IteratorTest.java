@@ -773,4 +773,15 @@ class IteratorTest {
 		});
 		assertEquals(list, List.of("abc", "cba", "ccb", "hbw"));
 	}
+
+	@Test
+	void manyCycle() {
+		iterEquals(
+				of(0, 1, 0, 1, 2, 1, 0, 1, 2, 3, 2, 1, 0, 1, 2, 3, 4, 3, 2, 1),
+				range(2)
+						.flatMap(i ->
+								range(0, i).chain(range(1, i - 1).rev()))
+						.take(20)
+		);
+	}
 }

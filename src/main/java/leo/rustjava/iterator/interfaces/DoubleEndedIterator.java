@@ -4,7 +4,11 @@ import leo.rustjava.Option;
 import leo.rustjava.iterator.Iterator;
 import leo.rustjava.iterator.adapters.Rev;
 
+import java.util.function.BiFunction;
+
 public interface DoubleEndedIterator<Item> extends Iterator<Item> {
+    Option<Item> nextBack();
+
     default Option<Item> nthBack(int n) {
         return advanceBackBy(n) ? nextBack() : Option.None();
     }
@@ -12,13 +16,20 @@ public interface DoubleEndedIterator<Item> extends Iterator<Item> {
     default boolean advanceBackBy(int n) {
         for (int i = 0; i < n; i++) {
             if (nextBack().isNone()) {
-	            return false;
+                return false;
             }
         }
         return true;
     }
 
-    Option<Item> nextBack();
+    default <B> B rfold(B seed, BiFunction<? super B, ? super Item, ? extends B> f) {
+        B state = seed;
+        while (true) {
+            Option<Item> item = nextBack();
+            if (item.isNone()) return state;
+            state = f.apply(state, item.unwrap());
+        }
+    }
 
     default DoubleEndedIterator<Item> rev() {
         return new Rev<>(this);
