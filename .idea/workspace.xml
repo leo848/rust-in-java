@@ -8,37 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="implement Copy for many iterators and adapters">
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="flatMap generalization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Chain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Chain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Cycle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Enumerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Enumerate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FilterMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FilterMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FlatMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/FlatMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Fuse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Fuse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Inspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Inspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Intersperse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Intersperse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/MapWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/MapWhile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Rev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Rev.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Skip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Skip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/SkipWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/SkipWhile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/StepBy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/StepBy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Take.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Take.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/TakeWhile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/TakeWhile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Zip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Zip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/DoubleEndedIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/DoubleEndedIterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Empty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/EndlessRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/EndlessRange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/FromFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/FromFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/ListIter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/ListIter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Once.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Once.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/OnceWith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/OnceWith.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Range.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Repeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Repeat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/RepeatWith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/RepeatWith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,22 +50,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Project.color&quot;: &quot;0b341b&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/leo/Projects/IdeaProjects/RustJava/src/main/java/leo/rustjava/iterator/sources&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/leo/5AB0-8526/Werwolf&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.maddyhome.idea.vim.ui.VimEmulationConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Project.color": "0b341b",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_directory_selection": "/home/leo/Projects/IdeaProjects/RustJava/src/main/java/leo/rustjava/iterator/sources",
+    "last_opened_file_path": "/media/leo/5AB0-8526/Werwolf",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="leo.rustjava.iterator.adapters" />
@@ -223,7 +196,7 @@
       <workItem from="1661279195783" duration="22688000" />
       <workItem from="1661504546843" duration="771000" />
       <workItem from="1661788705968" duration="7147000" />
-      <workItem from="1662478953257" duration="21655000" />
+      <workItem from="1662478953257" duration="22435000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -400,7 +373,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662566851342</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="implement Copy for many iterators and adapters">
+      <created>1662570784350</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1662570784350</updated>
+    </task>
+    <task id="LOCAL-00027" summary="flatMap generalization">
+      <created>1662570844408</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1662570844408</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +407,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="&lt;? extends HelpfulCommitMessage&gt;" />
     <MESSAGE value="two haskell tests + idea config" />
     <MESSAGE value="complete specialization of Empty (yay speed)" />
     <MESSAGE value="generalization of Iterators" />
@@ -445,7 +431,8 @@
     <MESSAGE value="endless specialization, JavaIterator&#10;&#10;iterator is now an Iterable -&gt; you can now do &#10;`for (var i: range(0, 10).map(n -&gt; n / 4)) {&#10;    System.out.println(i);&#10;}` (it's generally only useful when needing to break, continue or return)" />
     <MESSAGE value="FromIterable, from(Iterable), from(Stream), from(Iterator)" />
     <MESSAGE value="implement Copy for many iterators and adapters" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement Copy for many iterators and adapters" />
+    <MESSAGE value="flatMap generalization" />
+    <option name="LAST_COMMIT_MESSAGE" value="flatMap generalization" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

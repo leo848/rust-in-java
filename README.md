@@ -3,7 +3,7 @@
 This repository attempts to make the best features of Rust
 available in Java. It does not depend on any external libraries.
 
-The most important two types of this repo are the `Option<T>` class and the `Iterator<T>`
+The most important two types of this repo are the `Option<T>` and `Result<T, E>` classes as well as the `Iterator<T>`
 interface. They behave - except for some caveats - like their Rust counterparts.
 
 ## Iterators
@@ -19,7 +19,7 @@ interfaces.
 In addition to the standard library iterators and adapters, a large subset of the `itertools` crate
 is also included in this repo. If something you want to see is missing, just submit a PR.
 
-## Options
+## Option<T>
 
 *See the [Rust Docs](https://doc.rust-lang.org/std/option/index.html) for details (only differences are documented
 here)*
@@ -33,9 +33,25 @@ as `None()` (assuming `import static leo.rustjava.Option.*`).
 Because Java lacks a match statement, it is quite tedious to always call `isNone` and
 `isSome` and the monadic operations should be used whenever possible.
 
+## Result<T, E>
+
+*See the [Rust Docs](https://doc.rust-lang.org/std/result/index.html) for details (only differences are documented
+here)*
+
+Did I already mention that Java doesn't have sum types? Oh well.   
+The implementation option chosen in this repo is to first implement an `Either<L, R>` type, storing
+an `Option<L>` and an `Option<R>` (see the [either](https://docs.rs/either/latest/either/enum.Either.html) docs for
+the provided methods and stuff). A `Result<T, E>` is then a specialized `Either<T, E>` with many redirections
+(e.g. the `isOkAnd` method calls `Either::isLeftAnd`). Except being able to match them, results should feel pretty much
+the same as in Rust.
+
+## ControlFlow<B, C> and Try<Output, Residual>
+
+I tried to implement this, but failed. Please help me, Rust and Java gods.
+
 ## Completeness
 
-This projects does not promise completeness or correctness, and is subject to change. Use at your own risk.
+This projects does not promise completeness or correctness, and is subject to change. ***Use at your own risk.***
 
 ## Copyright + Licensing
 
