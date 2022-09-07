@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class Iterators {
     @SafeVarargs
@@ -67,4 +68,19 @@ public class Iterators {
         return iter.iter();
     }
 
+    public static <Item> Iterator<Item> from(Iterable<? extends Item> iter) {
+        return from(iter.iterator());
+    }
+
+    public static <Item> Iterator<Item> from(Stream<? extends Item> stream) {
+        return from(stream.iterator());
+    }
+
+    public static <Item> Iterator<Item> from(Item[] array) {
+        return from(Arrays.asList(array));
+    }
+
+    public static <Item> Iterator<Item> from(java.util.Iterator<? extends Item> iter) {
+        return new FromIterable<>(iter);
+    }
 }

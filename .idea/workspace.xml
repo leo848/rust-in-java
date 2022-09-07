@@ -8,14 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="DoubleEndedIterator rfold, new test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/JavaIterator.java" afterDir="false" />
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="endless specialization, JavaIterator&#10;&#10;iterator is now an Iterable -&gt; you can now do &#10;`for (var i: range(0, 10).map(n -&gt; n / 4)) {&#10;    System.out.println(i);&#10;}` (it's generally only useful when needing to break, continue or return)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/FromIterable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Peekable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Peekable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/EndlessIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/EndlessIterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/EndlessRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/EndlessRange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterators.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -200,7 +196,7 @@
       <workItem from="1661279195783" duration="22688000" />
       <workItem from="1661504546843" duration="771000" />
       <workItem from="1661788705968" duration="7147000" />
-      <workItem from="1662478953257" duration="16839000" />
+      <workItem from="1662478953257" duration="18273000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -363,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662563002589</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="endless specialization, JavaIterator&#10;&#10;iterator is now an Iterable -&gt; you can now do &#10;`for (var i: range(0, 10).map(n -&gt; n / 4)) {&#10;    System.out.println(i);&#10;}` (it's generally only useful when needing to break, continue or return)">
+      <created>1662565648204</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1662565648204</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +410,8 @@
     <MESSAGE value="IteratorTest rangeContains test" />
     <MESSAGE value="tryFold is a fucking mess.&#10;btw also implemented Result&lt;T, E&gt; and ControlFlow&lt;B, C&gt;, tried Try&lt;Output, Residual&gt; but failed" />
     <MESSAGE value="DoubleEndedIterator rfold, new test" />
-    <option name="LAST_COMMIT_MESSAGE" value="DoubleEndedIterator rfold, new test" />
+    <MESSAGE value="endless specialization, JavaIterator&#10;&#10;iterator is now an Iterable -&gt; you can now do &#10;`for (var i: range(0, 10).map(n -&gt; n / 4)) {&#10;    System.out.println(i);&#10;}` (it's generally only useful when needing to break, continue or return)" />
+    <option name="LAST_COMMIT_MESSAGE" value="endless specialization, JavaIterator&#10;&#10;iterator is now an Iterable -&gt; you can now do &#10;`for (var i: range(0, 10).map(n -&gt; n / 4)) {&#10;    System.out.println(i);&#10;}` (it's generally only useful when needing to break, continue or return)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
