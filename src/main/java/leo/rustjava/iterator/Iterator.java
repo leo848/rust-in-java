@@ -25,6 +25,10 @@ public interface Iterator<Item> extends IntoIter<Item>, Iterable<Item> {
         return SizeHint.UNKNOWN;
     }
 
+    default Iterator<Item> copy() {
+        throw new RuntimeException(new CloneNotSupportedException("The iterator " + getClass().getName() + " doesn't support cloning."));
+    }
+
     default int count() {
         return fold(0, (acc, item) -> acc + 1);
     }
@@ -138,7 +142,7 @@ public interface Iterator<Item> extends IntoIter<Item>, Iterable<Item> {
         return new FilterMap<>(this, f);
     }
 
-    default <U> Iterator<U> flatMap(Function<? super Item, IntoIter<U>> f) {
+    default <U> Iterator<U> flatMap(Function<? super Item, ? extends IntoIter<U>> f) {
         return new FlatMap<>(this, f);
     }
 

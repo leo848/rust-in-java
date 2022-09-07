@@ -35,6 +35,11 @@ public class Filter<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> copy() {
+		return new Filter<>(iter.copy(), predicate);
+	}
+
+	@Override
 	public SizeHint sizeHint() {
 		return new SizeHint(0, iter.sizeHint().upper());
 	}

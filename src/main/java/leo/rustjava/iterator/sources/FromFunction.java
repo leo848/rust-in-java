@@ -24,6 +24,11 @@ public class FromFunction<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> copy() {
+		return new FromFunction<>(supplier);
+	}
+
+	@Override
 	public String toString() {
 		return "FunctionIter";
 	}

@@ -22,6 +22,11 @@ public class Rev<T> implements Iterator<T>, DoubleEndedIterator<T> {
 	}
 
 	@Override
+	public DoubleEndedIterator<T> copy() {
+		return new Rev<>(iter.copy());
+	}
+
+	@Override
 	public Option<T> nextBack() {
 		return iter.next();
 	}

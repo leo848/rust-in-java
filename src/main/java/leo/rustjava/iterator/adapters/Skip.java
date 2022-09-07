@@ -34,6 +34,11 @@ public class Skip<T> implements Iterator<T> {
     }
 
     @Override
+    public Iterator<T> copy() {
+        return new Skip<>(iter.copy(), n);
+    }
+
+    @Override
     public String toString() {
         return "Skip { " + iter + ", n: " + n + " }";
     }

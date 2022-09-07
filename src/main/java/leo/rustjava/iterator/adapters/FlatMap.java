@@ -14,7 +14,7 @@ public class FlatMap<T, U> implements Iterator<U> {
 
 	Iterator<U> currentIter = empty();
 
-	public FlatMap(Iterator<? extends T> iter, Function<T, IntoIter<U>> f) {
+	public FlatMap(Iterator<? extends T> iter, Function<T, ? extends IntoIter<U>> f) {
 		this.iter = iter;
 		this.f = f.andThen(IntoIter::iter);
 	}
@@ -29,6 +29,11 @@ public class FlatMap<T, U> implements Iterator<U> {
 		currentIter = nextIter.unwrap();
 
 		return next();
+	}
+
+	@Override
+	public Iterator<U> copy() {
+		return new FlatMap<>(iter, f);
 	}
 
 	@Override

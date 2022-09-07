@@ -18,6 +18,11 @@ public class Empty<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeI
     }
 
     @Override
+    public Empty<T> copy() {
+        return new Empty<>();
+    }
+
+    @Override
     public int count() {
         return 0;
     }
@@ -103,7 +108,7 @@ public class Empty<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeI
     }
 
     @Override
-    public <U> Iterator<U> flatMap(Function<? super T, IntoIter<U>> f) {
+    public <U> Iterator<U> flatMap(Function<? super T, ? extends IntoIter<U>> f) {
         return new Empty<>();
     }
 

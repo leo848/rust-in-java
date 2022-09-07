@@ -114,6 +114,11 @@ public class Range implements Iterator<Integer>, DoubleEndedIterator<Integer>, E
 	}
 
 	@Override
+	public Range copy() {
+		return new Range(start, end);
+	}
+
+	@Override
 	public String toString() {
 		return start + ".." + end;
 	}

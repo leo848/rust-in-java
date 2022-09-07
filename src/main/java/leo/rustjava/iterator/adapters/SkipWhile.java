@@ -30,6 +30,11 @@ public class SkipWhile<T> implements Iterator<T> {
 		return item;
 	}
 
+	@Override
+	public Iterator<T> copy() {
+		if (flag) return Iterator.super.copy();
+		return new SkipWhile<>(iter.copy(), predicate);
+	}
 
 	@Override
 	public String toString() {

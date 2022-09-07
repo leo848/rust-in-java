@@ -20,6 +20,11 @@ public class MapWhile<T, U> implements Iterator<U> {
 	}
 
 	@Override
+	public Iterator<U> copy() {
+		return new MapWhile<>(iter, function);
+	}
+
+	@Override
 	public String toString() {
 		return "MapWhile { " + iter + " }";
 	}

@@ -6,6 +6,7 @@ import leo.rustjava.iterator.interfaces.DoubleEndedIterator;
 import leo.rustjava.iterator.interfaces.ExactSizeIterator;
 import leo.rustjava.iterator.interfaces.FusedIterator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Iterators not present in Rust modules
@@ -29,28 +30,33 @@ public class ListIter<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSi
         }
     }
 
-    @Override
-    public Option<T> nextBack() {
-        if (index <= indexBack) {
-            return Option.Some(list.get(indexBack--));
-        } else {
-            return Option.None();
-        }
-    }
+	@Override
+	public Option<T> nextBack() {
+		if (index <= indexBack) {
+			return Option.Some(list.get(indexBack--));
+		} else {
+			return Option.None();
+		}
+	}
 
-    @Override
-    public int len() {
-        return list.size() - index;
-    }
+	@Override
+	public int len() {
+		return list.size() - index;
+	}
 
-    @Override
-    public List<T> toList() {
-        if (index == 0) return list;
-        else return list.subList(index, list.size());
-    }
+	@Override
+	public List<T> toList() {
+		if (index == 0) return list;
+		else return list.subList(index, list.size());
+	}
 
-    @Override
-    public String toString() {
-        return "ListIter { " + list + " }";
-    }
+	@Override
+	public DoubleEndedIterator<T> copy() {
+		return new ListIter<>(new ArrayList<>(list));
+	}
+
+	@Override
+	public String toString() {
+		return "ListIter { " + list + " }";
+	}
 }

@@ -5,8 +5,7 @@ import leo.rustjava.iterator.Iterator;
 import leo.rustjava.iterator.SizeHint;
 import leo.rustjava.iterator.interfaces.IntoIter;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 
 public class Chain<T> implements Iterator<T> {
 	private final Iterator<T> iterB;
@@ -26,6 +25,12 @@ public class Chain<T> implements Iterator<T> {
 			return next();
 		}
 		return item;
+	}
+
+	@Override
+	public Iterator<T> copy() {
+		if (iterA.isNone()) return iterB.copy();
+		return new Chain<>(iterA.unwrap().copy(), iterB.copy());
 	}
 
 	@Override

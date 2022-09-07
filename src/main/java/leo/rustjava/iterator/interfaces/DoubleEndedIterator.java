@@ -9,6 +9,10 @@ import java.util.function.BiFunction;
 public interface DoubleEndedIterator<Item> extends Iterator<Item> {
     Option<Item> nextBack();
 
+    default DoubleEndedIterator<Item> copy() {
+        throw new RuntimeException(new CloneNotSupportedException("copy not supported for iterator " + getClass().getName()));
+    }
+
     default Option<Item> nthBack(int n) {
         return advanceBackBy(n) ? nextBack() : Option.None();
     }

@@ -24,6 +24,11 @@ public class Take<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> copy() {
+		return new Take<>(iter.copy(), n);
+	}
+
+	@Override
 	public SizeHint sizeHint() {
 		return SizeHint.max(n);
 	}

@@ -29,6 +29,12 @@ public class Intersperse<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> copy() {
+		if (needsSep) return Iterator.super.copy();
+		return new Intersperse<>(iter.copy(), separator);
+	}
+
+	@Override
 	public String toString() {
 		return "Intersperse { " + iter + ", " + separator + " }";
 	}

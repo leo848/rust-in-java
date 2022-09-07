@@ -48,6 +48,11 @@ public class FilterMap<T, U> implements Iterator<U> {
 	}
 
 	@Override
+	public Iterator<U> copy() {
+		return new FilterMap<>(iter.copy(), f);
+	}
+
+	@Override
 	public SizeHint sizeHint() {
 		return new SizeHint(0, iter.sizeHint().upper());
 	}

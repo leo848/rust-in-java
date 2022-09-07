@@ -31,6 +31,11 @@ public class Map<T, U> implements Iterator<U> {
 	}
 
 	@Override
+	public Iterator<U> copy() {
+		return new Map<>(iter.copy(), f);
+	}
+
+	@Override
 	public String toString() {
 		return "Map { " + iter + " }";
 	}

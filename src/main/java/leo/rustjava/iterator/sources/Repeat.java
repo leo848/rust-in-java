@@ -7,24 +7,29 @@ import leo.rustjava.iterator.interfaces.EndlessIterator;
 import leo.rustjava.iterator.interfaces.FusedIterator;
 
 public class Repeat<T> implements Iterator<T>, DoubleEndedIterator<T>, EndlessIterator<T>, FusedIterator<T> {
-    T item;
+	T item;
 
-    public Repeat(T item) {
-        this.item = item;
-    }
+	public Repeat(T item) {
+		this.item = item;
+	}
 
-    @Override
-    public Option<T> next() {
-        return Option.Some(item);
-    }
+	@Override
+	public Option<T> next() {
+		return Option.Some(item);
+	}
 
-    @Override
-    public Option<T> nextBack() {
-        return Option.Some(item);
-    }
+	@Override
+	public Option<T> nextBack() {
+		return Option.Some(item);
+	}
 
-    @Override
-    public String toString() {
-        return "Repeat { " + item + " }";
-    }
+	@Override
+	public DoubleEndedIterator<T> copy() {
+		return this;
+	}
+
+	@Override
+	public String toString() {
+		return "Repeat { " + item + " }";
+	}
 }

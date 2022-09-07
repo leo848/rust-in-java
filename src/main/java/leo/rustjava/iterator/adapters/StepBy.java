@@ -31,6 +31,12 @@ public class StepBy<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> copy() {
+		if (!firstTake) return Iterator.super.copy();
+		return new StepBy<>(iter.copy(), step);
+	}
+
+	@Override
 	public String toString() {
 		return "StepBy { " + iter + ", n: " + " }";
 	}

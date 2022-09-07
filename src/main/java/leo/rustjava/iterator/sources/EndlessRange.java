@@ -20,6 +20,11 @@ public class EndlessRange implements Iterator<Integer>, EndlessIterator<Integer>
     }
 
     @Override
+    public Iterator<Integer> copy() {
+        return new EndlessRange(n);
+    }
+
+    @Override
     public Iterator<Integer> take(int amount) {
         return range(n, n + amount);
     }

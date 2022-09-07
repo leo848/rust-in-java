@@ -42,6 +42,13 @@ public class Cycle<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> copy() {
+		if (!cache.isEmpty())
+			throw new RuntimeException(new CloneNotSupportedException("touched cycle can't be copied"));
+		return new Cycle<>(iter.copy());
+	}
+
+	@Override
 	public SizeHint sizeHint() {
 		return this.index == 0 ? SizeHint.UNKNOWN : this.cache.isEmpty() ? SizeHint.ZERO : SizeHint.ENDLESS;
 	}

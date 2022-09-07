@@ -4,8 +4,7 @@ import leo.rustjava.Option;
 import leo.rustjava.Pair;
 import leo.rustjava.iterator.Iterator;
 
-import static leo.rustjava.Option.None;
-import static leo.rustjava.Option.Some;
+import static leo.rustjava.Option.*;
 
 public class Zip<L, R> implements Iterator<Pair<L, R>> {
     Iterator<L> left;
@@ -23,6 +22,11 @@ public class Zip<L, R> implements Iterator<Pair<L, R>> {
         Option<R> rightItem = right.next();
         if (rightItem.isNone()) return None();
         return Some(new Pair<>(leftItem.unwrap(), rightItem.unwrap()));
+    }
+
+    @Override
+    public Iterator<Pair<L, R>> copy() {
+        return new Zip<>(left.copy(), right.copy());
     }
 
     @Override

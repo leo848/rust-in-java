@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.function.*;
 
 import static leo.rustjava.Option.*;
-import static leo.rustjava.iterator.Iterators.of;
+import static leo.rustjava.iterator.Iterators.*;
 
 public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIterator<T>, FusedIterator<T> {
     T value;
@@ -50,7 +50,7 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
 
     @Override
     public Iterator<Pair<Integer, T>> enumerate() {
-        return exhausted ? new Empty<>() : new Once<>(new Pair<>(0, next().unwrap()));
+        return exhausted ? empty() : new Once<>(new Pair<>(0, next().unwrap()));
     }
 
     @Override
@@ -75,18 +75,24 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
     }
 
     @Override
+    public DoubleEndedIterator<T> copy() {
+        if (exhausted) return empty();
+        return new Once<>(value);
+    }
+
+    @Override
     public Iterator<T> chain(IntoIter<T> other) {
         return exhausted ? other.iter() : DoubleEndedIterator.super.chain(other);
     }
 
     @Override
     public <U> Iterator<Pair<T, U>> zip(Iterator<U> other) {
-        return exhausted ? new Empty<>() : DoubleEndedIterator.super.zip(other);
+        return exhausted ? empty() : DoubleEndedIterator.super.zip(other);
     }
 
     @Override
     public Iterator<T> scan1(BiFunction<? super T, ? super T, ? extends T> f) {
-        return new Empty<>();
+        return empty();
     }
 
     @Override
@@ -97,37 +103,37 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
 
     @Override
     public Iterator<T> filter(Predicate<? super T> p) {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         return DoubleEndedIterator.super.filter(p);
     }
 
     @Override
     public <U> Iterator<U> filterMap(Function<? super T, ? extends Option<U>> f) {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         return DoubleEndedIterator.super.filterMap(f);
     }
 
     @Override
-    public <U> Iterator<U> flatMap(Function<? super T, IntoIter<U>> f) {
-        if (exhausted) return new Empty<>();
+    public <U> Iterator<U> flatMap(Function<? super T, ? extends IntoIter<U>> f) {
+        if (exhausted) return empty();
         return DoubleEndedIterator.super.flatMap(f);
     }
 
     @Override
     public Iterator<T> skipWhile(Predicate<? super T> p) {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         return DoubleEndedIterator.super.skipWhile(p);
     }
 
     @Override
     public Iterator<T> takeWhile(Predicate<? super T> p) {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         return DoubleEndedIterator.super.takeWhile(p);
     }
 
     @Override
     public Iterator<T> inspect(Consumer<? super T> c) {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         return DoubleEndedIterator.super.inspect(c);
     }
 
@@ -142,14 +148,14 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
     public Iterator<T> interleaveShortest(IntoIter<T> other) {
         var iter = other.iter();
         var item = iter.next();
-        if (item.isNone()) return new Empty<>();
-        if (exhausted) return new Empty<>();
+        if (item.isNone()) return empty();
+        if (exhausted) return empty();
         return of(next().unwrap(), item.unwrap());
     }
 
     @Override
     public <K> Iterator<Pair<K, List<T>>> groupBy(Function<? super T, ? extends K> key) {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         var item = next().unwrap();
         return new Once<>(new Pair<>(key.apply(item), List.of(item)));
     }
@@ -161,24 +167,24 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
 
     @Override
     public Iterator<ExactSizeIterator<T>> chunksExact(int chunkSize) {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         if (chunkSize == 1) return new Once<>(this);
-        return new Empty<>();
+        return empty();
     }
 
     @Override
     public Iterator<Pair<T, T>> pairWindows() {
-        return new Empty<>();
+        return empty();
     }
 
     @Override
     public Iterator<Pair<T, T>> pairs() {
-        return new Empty<>();
+        return empty();
     }
 
     @Override
     public <U> Iterator<Pair<T, U>> cartesianProduct(IntoIter<U> other) {
-        return new Empty<>();
+        return empty();
     }
 
     @Override
@@ -193,24 +199,24 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
 
     @Override
     public Iterator<Pair<Integer, T>> dedupWithCount() {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         return new Once<>(new Pair<>(1, next().unwrap()));
     }
 
     @Override
     public Iterator<Pair<Integer, T>> dedupByWithCount(BiPredicate<? super T, ? super T> cmp) {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         return new Once<>(new Pair<>(1, next().unwrap()));
     }
 
     @Override
     public Iterator<T> duplicates() {
-        return new Empty<>();
+        return empty();
     }
 
     @Override
     public <U> Iterator<T> duplicatesBy(Function<? super T, U> id) {
-        return new Empty<>();
+        return empty();
     }
 
     @Override
@@ -231,7 +237,7 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
 
     @Override
     public Iterator<Integer> positions(Predicate<? super T> predicate) {
-        if (exhausted) return new Empty<>();
+        if (exhausted) return empty();
         return DoubleEndedIterator.super.positions(predicate);
     }
 
@@ -321,7 +327,7 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
 
     @Override
     public Iterator<T> take(int n) {
-        if (n == 0 || exhausted) return new Empty<>();
+        if (n == 0 || exhausted) return empty();
         return this;
     }
 

@@ -32,6 +32,11 @@ public class Inspect<T> implements Iterator<T> {
 	}
 
 	@Override
+	public Iterator<T> copy() {
+		return new Inspect<>(iter.copy(), consumer);
+	}
+
+	@Override
 	public SizeHint sizeHint() {
 		return iter.sizeHint();
 	}

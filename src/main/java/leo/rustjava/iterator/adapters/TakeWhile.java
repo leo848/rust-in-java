@@ -21,24 +21,29 @@ public class TakeWhile<T> implements Iterator<T>, FusedIterator<T> {
 
     @Override
     public Option<T> next() {
-        if (flag) return None();
-        Option<T> item = iter.next();
-        if (item.isNone()) return None();
-        else if (predicate.test(item.unwrap())) return item;
-        else {
-            flag = true;
-            return None();
-        }
+	    if (flag) return None();
+	    Option<T> item = iter.next();
+	    if (item.isNone()) return None();
+	    else if (predicate.test(item.unwrap())) return item;
+	    else {
+		    flag = true;
+		    return None();
+	    }
     }
 
-    @Override
-    public SizeHint sizeHint() {
-        if (flag) return SizeHint.ZERO;
-        else return new SizeHint(0, iter.sizeHint().upper());
-    }
+	@Override
+	public Iterator<T> copy() {
+		return new TakeWhile<>(iter.copy(), predicate);
+	}
 
-    @Override
-    public String toString() {
-        return "TakeWhile { " + iter + " }";
-    }
+	@Override
+	public SizeHint sizeHint() {
+		if (flag) return SizeHint.ZERO;
+		else return new SizeHint(0, iter.sizeHint().upper());
+	}
+
+	@Override
+	public String toString() {
+		return "TakeWhile { " + iter + " }";
+	}
 }
