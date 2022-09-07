@@ -1,7 +1,6 @@
 package leo.rustjava.iterator;
 
-import leo.rustjava.Option;
-import leo.rustjava.Pair;
+import leo.rustjava.*;
 import leo.rustjava.iterator.adapters.Map;
 import leo.rustjava.iterator.adapters.*;
 import leo.rustjava.iterator.extra.*;
@@ -15,6 +14,7 @@ import java.util.function.*;
 import java.util.stream.IntStream;
 
 import static leo.rustjava.Option.*;
+import static leo.rustjava.Unit.Unit;
 import static leo.rustjava.iterator.Iterators.from;
 
 @SuppressWarnings("unused")
@@ -53,14 +53,14 @@ public interface Iterator<Item> extends IntoIter<Item> {
         }
     }
 
-    default <B> B tryFold(B seed, BiFunction<? super B, ? super Item, ? extends Option<B>> f) {
+    default <B> B tryFold(B seed, BiFunction<? super B, ? super Item, ControlFlow<B, B>> f) {
         B state = seed;
         while (true) {
             Option<Item> item = next();
             if (item.isNone()) return state;
-            var maybeState = f.apply(state, item.unwrap());
-            if (maybeState.isNone()) return state;
-            state = maybeState.unwrap();
+            var flow = f.apply(state, item.unwrap());
+            if (flow.isBreak()) return flow.breakValue().unwrap();
+            state = flow.continueValue().unwrap();
         }
     }
 
@@ -86,10 +86,6 @@ public interface Iterator<Item> extends IntoIter<Item> {
     default Option<Item> nth(int n) {
         return advanceBy(n) ? next() : None();
     }
-
-    /*##############################
-    # Methods that return one item #
-    ##############################*/
 
     default boolean advanceBy(int n) {
         return IntStream.range(0, n).noneMatch(i -> next().isNone());
@@ -356,6 +352,10 @@ public interface Iterator<Item> extends IntoIter<Item> {
                     return 0;
                 }
         );
+    }
+
+    default void tryForEach(Function<? super Item, ControlFlow<Unit, Unit>> f) {
+        tryFold(Unit(), (_acc, elt) -> f.apply(elt));
     }
 
     default ListIter<Item> sorted() {

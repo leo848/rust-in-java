@@ -1,5 +1,6 @@
 package leo.rustjava.iterator.adapters;
 
+import leo.rustjava.ControlFlow;
 import leo.rustjava.Option;
 import leo.rustjava.Pair;
 import leo.rustjava.iterator.Iterator;
@@ -41,7 +42,7 @@ public class Adapt<T, U> implements Iterator<U> {
 	}
 
 	@Override
-	public <B> B tryFold(B seed, BiFunction<? super B, ? super U, ? extends Option<B>> f) {
+	public <B> B tryFold(B seed, BiFunction<? super B, ? super U, ControlFlow<B, B>> f) {
 		return iter.tryFold(seed, f);
 	}
 

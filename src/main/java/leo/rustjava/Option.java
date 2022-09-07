@@ -53,6 +53,11 @@ public final class Option<T> implements IntoIter<T> {
 		return this.unwrap();
 	}
 
+	public T expect(String msg) {
+		if (isNone()) throw new NullPointerException(msg);
+		return value;
+	}
+
 	public boolean isSomeAnd(Predicate<? super T> predicate) {
 		Option<Boolean> maybe = this.map(predicate::test);
 		if (maybe.isNone()) return false;

@@ -38,23 +38,8 @@ public interface EndlessIterator<T> extends Iterator<T>, FusedIterator<T> {
 	}
 
 	@Override
-	default <B> B tryFold(B seed, BiFunction<? super B, ? super T, ? extends Option<B>> f) {
-		throw unsupported("tryFold");
-	}
-
-	@Override
 	default Option<T> last() {
 		throw unsupported("last");
-	}
-
-	@Override
-	default boolean allEqual() {
-		throw unsupported("allEqual");
-	}
-
-	@Override
-	default boolean allUnique() {
-		throw unsupported("allUnique");
 	}
 
 	@Override

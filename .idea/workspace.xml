@@ -8,11 +8,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="IteratorTest rangeContains test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Adapt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Flatten.java" afterDir="false" />
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="tryFold is a fucking mess.&#10;btw also implemented Result&lt;T, E&gt; and ControlFlow&lt;B, C&gt;, tried Try&lt;Output, Residual&gt; but failed">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/ControlFlow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/Either.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/Unit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/Option.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Adapt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Adapt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/EndlessIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/EndlessIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Empty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Once.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/Once.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -70,6 +77,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="leo.rustjava" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -92,7 +102,7 @@
       <recent name="leo.rustjava.iterator.adapters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IteratorTest.applySum">
+  <component name="RunManager" selected="JUnit.IteratorTest.tryFold">
     <configuration name="IteratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
@@ -119,22 +129,6 @@
       <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
       <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
       <option name="METHOD_NAME" value="anonymousCollatz" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IteratorTest.anonymousFibonacci" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="RustJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leo.rustjava.iterator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
-      <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
-      <option name="METHOD_NAME" value="anonymousFibonacci" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -172,13 +166,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IteratorTest.tryFold" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RustJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leo.rustjava.iterator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
+      <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
+      <option name="METHOD_NAME" value="tryFold" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IteratorTest.tryFold" />
         <item itemvalue="JUnit.IteratorTest.applySum" />
         <item itemvalue="JUnit.IteratorTest.contains" />
         <item itemvalue="JUnit.IteratorTest.anonymousCollatz" />
         <item itemvalue="JUnit.IteratorTest" />
-        <item itemvalue="JUnit.IteratorTest.anonymousFibonacci" />
       </list>
     </recent_temporary>
   </component>
@@ -194,6 +204,7 @@
       <workItem from="1661279195783" duration="22688000" />
       <workItem from="1661504546843" duration="771000" />
       <workItem from="1661788705968" duration="7147000" />
+      <workItem from="1662478953257" duration="13069000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -384,7 +395,8 @@
     <MESSAGE value="IteratorTest.anonymousCollatz test" />
     <MESSAGE value="Range contains now exhausts again" />
     <MESSAGE value="IteratorTest rangeContains test" />
-    <option name="LAST_COMMIT_MESSAGE" value="IteratorTest rangeContains test" />
+    <MESSAGE value="tryFold is a fucking mess.&#10;btw also implemented Result&lt;T, E&gt; and ControlFlow&lt;B, C&gt;, tried Try&lt;Output, Residual&gt; but failed" />
+    <option name="LAST_COMMIT_MESSAGE" value="tryFold is a fucking mess.&#10;btw also implemented Result&lt;T, E&gt; and ControlFlow&lt;B, C&gt;, tried Try&lt;Output, Residual&gt; but failed" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

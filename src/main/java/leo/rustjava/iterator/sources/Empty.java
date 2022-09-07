@@ -1,5 +1,6 @@
 package leo.rustjava.iterator.sources;
 
+import leo.rustjava.ControlFlow;
 import leo.rustjava.Option;
 import leo.rustjava.Pair;
 import leo.rustjava.iterator.Iterator;
@@ -27,7 +28,7 @@ public class Empty<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeI
     }
 
     @Override
-    public <B> B tryFold(B seed, BiFunction<? super B, ? super T, ? extends Option<B>> f) {
+    public <B> B tryFold(B seed, BiFunction<? super B, ? super T, ControlFlow<B, B>> f) {
         return seed;
     }
 

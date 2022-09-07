@@ -1,5 +1,6 @@
 package leo.rustjava.iterator.sources;
 
+import leo.rustjava.ControlFlow;
 import leo.rustjava.Option;
 import leo.rustjava.Pair;
 import leo.rustjava.iterator.Iterator;
@@ -35,9 +36,11 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
     }
 
     @Override
-    public <B> B tryFold(B seed, BiFunction<? super B, ? super T, ? extends Option<B>> f) {
+    public <B> B tryFold(B seed, BiFunction<? super B, ? super T, ControlFlow<B, B>> f) {
         if (exhausted) return seed;
-        return f.apply(seed, next().unwrap()).unwrapOr(seed);
+        var flow = f.apply(seed, next().unwrap());
+        if (flow.isBreak()) return flow.breakValue().unwrap();
+        else return flow.continueValue().unwrap();
     }
 
     @Override

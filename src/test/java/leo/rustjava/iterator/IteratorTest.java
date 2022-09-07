@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
+import static leo.rustjava.ControlFlow.*;
 import static leo.rustjava.Option.*;
 import static leo.rustjava.iterator.Iterators.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -749,5 +750,27 @@ class IteratorTest {
 				42,
 				(Integer) of(20, 30, -10, 2).apply(Iterator::sum)
 		);
+	}
+
+	@Test
+	void tryFold() {
+		assertEquals(
+				21,
+				range(1).tryFold(0, (accum, elt) -> {
+					if (elt > 6) return Break(accum);
+					else return Continue(accum + elt);
+				})
+		);
+	}
+
+	@Test
+	void tryForEach() {
+		var list = new ArrayList<String>();
+		of("abc", "cba", "ccb", "hbw", "zdf", "null").tryForEach(s -> {
+			if (s.contains("z")) return Break();
+			list.add(s);
+			return Continue();
+		});
+		assertEquals(list, List.of("abc", "cba", "ccb", "hbw"));
 	}
 }
