@@ -18,6 +18,11 @@ public interface EndlessIterator<T> extends Iterator<T>, FusedIterator<T> {
 		return SizeHint.ENDLESS;
 	}
 
+	@Override
+	default Iterator<T> cycle() {
+		return this;
+	}
+
 	private UnsupportedOperationException unsupported(String method) {
 		return new UnsupportedOperationException("This iterator is infinite, yet `Iterator::" + method + "` exhausts the iterator");
 	}

@@ -784,4 +784,14 @@ class IteratorTest {
 						.take(20)
 		);
 	}
+
+	@Test
+	void javaIterator() {
+		// primitive toList
+		var list = new ArrayList<Integer>();
+		for (Integer i : range(0).take(100)) {
+			list.add(i);
+		}
+		iterEquals(from(list), range(0, 100));
+	}
 }

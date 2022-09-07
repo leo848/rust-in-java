@@ -8,9 +8,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="tryFold is a fucking mess.&#10;btw also implemented Result&lt;T, E&gt; and ControlFlow&lt;B, C&gt;, tried Try&lt;Output, Residual&gt; but failed">
+    <list default="true" id="b996af62-1e59-49f6-8d18-9b2ceb1d1f35" name="Changes" comment="DoubleEndedIterator rfold, new test">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/JavaIterator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/DoubleEndedIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/DoubleEndedIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/Iterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Peekable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/adapters/Peekable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/EndlessIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/interfaces/EndlessIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/EndlessRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leo/rustjava/iterator/sources/EndlessRange.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/leo/rustjava/iterator/IteratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +73,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="leo.rustjava.iterator.adapters" />
       <recent name="leo.rustjava" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -93,8 +98,8 @@
       <recent name="leo.rustjava.iterator.adapters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IteratorTest.manyCycle">
-    <configuration name="IteratorTest.anonymousCollatz" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.IteratorTest.specClasses">
+    <configuration name="IteratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
         <pattern>
@@ -104,8 +109,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
       <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
-      <option name="METHOD_NAME" value="anonymousCollatz" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -126,22 +130,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IteratorTest.contains" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="RustJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leo.rustjava.iterator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
-      <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
-      <option name="METHOD_NAME" value="contains" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="IteratorTest.manyCycle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RustJava" />
       <extension name="coverage">
@@ -153,6 +141,22 @@
       <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
       <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
       <option name="METHOD_NAME" value="manyCycle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IteratorTest.specClasses" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RustJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leo.rustjava.iterator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="leo.rustjava.iterator" />
+      <option name="MAIN_CLASS_NAME" value="leo.rustjava.iterator.IteratorTest" />
+      <option name="METHOD_NAME" value="specClasses" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -176,11 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IteratorTest.specClasses" />
+        <item itemvalue="JUnit.IteratorTest" />
         <item itemvalue="JUnit.IteratorTest.manyCycle" />
         <item itemvalue="JUnit.IteratorTest.tryFold" />
         <item itemvalue="JUnit.IteratorTest.applySum" />
-        <item itemvalue="JUnit.IteratorTest.contains" />
-        <item itemvalue="JUnit.IteratorTest.anonymousCollatz" />
       </list>
     </recent_temporary>
   </component>
@@ -196,7 +200,7 @@
       <workItem from="1661279195783" duration="22688000" />
       <workItem from="1661504546843" duration="771000" />
       <workItem from="1661788705968" duration="7147000" />
-      <workItem from="1662478953257" duration="14325000" />
+      <workItem from="1662478953257" duration="16839000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1661181111762</created>
@@ -352,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662561641755</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="DoubleEndedIterator rfold, new test">
+      <created>1662563002589</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1662563002589</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +406,8 @@
     <MESSAGE value="Range contains now exhausts again" />
     <MESSAGE value="IteratorTest rangeContains test" />
     <MESSAGE value="tryFold is a fucking mess.&#10;btw also implemented Result&lt;T, E&gt; and ControlFlow&lt;B, C&gt;, tried Try&lt;Output, Residual&gt; but failed" />
-    <option name="LAST_COMMIT_MESSAGE" value="tryFold is a fucking mess.&#10;btw also implemented Result&lt;T, E&gt; and ControlFlow&lt;B, C&gt;, tried Try&lt;Output, Residual&gt; but failed" />
+    <MESSAGE value="DoubleEndedIterator rfold, new test" />
+    <option name="LAST_COMMIT_MESSAGE" value="DoubleEndedIterator rfold, new test" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

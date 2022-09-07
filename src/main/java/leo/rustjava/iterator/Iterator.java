@@ -18,7 +18,7 @@ import static leo.rustjava.Unit.Unit;
 import static leo.rustjava.iterator.Iterators.from;
 
 @SuppressWarnings("unused")
-public interface Iterator<Item> extends IntoIter<Item> {
+public interface Iterator<Item> extends IntoIter<Item>, Iterable<Item> {
     Option<Item> next();
 
     default SizeHint sizeHint() {
@@ -170,6 +170,11 @@ public interface Iterator<Item> extends IntoIter<Item> {
     @Override
     default Iterator<Item> iter() {
         return this;
+    }
+
+    @Override
+    default JavaIterator<Item> iterator() {
+        return new JavaIterator<>(this);
     }
 
     default Iterator<Item> interleave(IntoIter<Item> other) {
