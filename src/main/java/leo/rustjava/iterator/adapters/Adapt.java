@@ -82,7 +82,7 @@ public class Adapt<T, U> implements Iterator<U> {
 	}
 
 	@Override
-	public <U1> Iterator<Pair<U, U1>> zip(Iterator<U1> other) {
+	public <U1> Iterator<Pair<U, U1>> zip(IntoIter<U1> other) {
 		return iter.zip(other);
 	}
 
@@ -457,7 +457,7 @@ public class Adapt<T, U> implements Iterator<U> {
 	}
 
 	@Override
-	public <U1, V> Iterator<V> zipWith(Iterator<? extends U1> other, BiFunction<? super U, U1, ? extends V> function) {
+	public <U1, V> Iterator<V> zipWith(IntoIter<? extends U1> other, BiFunction<? super U, U1, ? extends V> function) {
 		return iter.zipWith(other, function);
 	}
 

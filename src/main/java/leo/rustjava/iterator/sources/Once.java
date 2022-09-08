@@ -86,7 +86,7 @@ public class Once<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeIt
     }
 
     @Override
-    public <U> Iterator<Pair<T, U>> zip(Iterator<U> other) {
+    public <U> Iterator<Pair<T, U>> zip(IntoIter<U> other) {
         return exhausted ? empty() : DoubleEndedIterator.super.zip(other);
     }
 

@@ -103,8 +103,8 @@ public interface Iterator<Item> extends IntoIter<Item>, Iterable<Item> {
         return new Chain<>(this, other);
     }
 
-    default <U> Iterator<Pair<Item, U>> zip(Iterator<U> other) {
-        return new Zip<>(this, other);
+    default <U> Iterator<Pair<Item, U>> zip(IntoIter<U> other) {
+        return new Zip<>(this, other.iter());
     }
 
     default Iterator<Item> intersperse(Item item) {
@@ -545,8 +545,8 @@ public interface Iterator<Item> extends IntoIter<Item>, Iterable<Item> {
         return counts;
     }
 
-    default <U, V> Iterator<V> zipWith(Iterator<? extends U> other, BiFunction<? super Item, U, ? extends V> function) {
-        return this.zip(other).map(pair -> function.apply(pair.left(), pair.right()));
+    default <U, V> Iterator<V> zipWith(IntoIter<? extends U> other, BiFunction<? super Item, U, ? extends V> function) {
+        return this.zip(other.iter()).map(pair -> function.apply(pair.left(), pair.right()));
     }
 
 

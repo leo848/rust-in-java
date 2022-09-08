@@ -73,7 +73,7 @@ public class Empty<T> implements Iterator<T>, DoubleEndedIterator<T>, ExactSizeI
     }
 
     @Override
-    public <U> Iterator<Pair<T, U>> zip(Iterator<U> other) {
+    public <U> Iterator<Pair<T, U>> zip(IntoIter<U> other) {
         return new Empty<>();
     }
 
